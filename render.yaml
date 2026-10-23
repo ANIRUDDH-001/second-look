@@ -1,0 +1,13 @@
+# Render static site: the recorded demo only. No model or server runs on Render; the page reads
+# frontend/public/fixtures, produced by `python -m eval.record_fixtures` on a laptop.
+services:
+  - type: web
+    name: second-look-demo
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && npm run build:demo
+    staticPublishPath: dist
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
