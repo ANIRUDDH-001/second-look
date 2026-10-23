@@ -1,14 +1,14 @@
 {
- "id": "40f3ccb1cad4c65f",
+ "id": "f38dd5f4af42874d",
  "status": "done",
  "error": null,
- "household": "MAC000252",
- "filename": "X015_clean.png",
- "created_at": "2026-10-23T15:18:39+00:00",
+ "household": "MAC000453",
+ "filename": "X016_clean.png",
+ "created_at": "2026-10-23T15:31:53+00:00",
  "result": {
   "verdict": {
-   "kind": "insufficient_evidence",
-   "headline": "A check failed, but it uses 1 value not found on the bill. Check it first.",
+   "kind": "discrepancy",
+   "headline": "Check the VAT: 2 checks failed. Billed \u00a3133.01, recomputed \u00a3126.68 (+\u00a36.33).",
    "findings": [
     {
      "check": "meter_advance",
@@ -20,8 +20,8 @@
       "curr_reading",
       "units_kwh"
      ],
-     "expected": "496 kWh",
-     "billed": "496 kWh",
+     "expected": "423 kWh",
+     "billed": "423 kWh",
      "detail": null
     },
     {
@@ -33,8 +33,8 @@
       "lines",
       "units_kwh"
      ],
-     "expected": "496 kWh",
-     "billed": "496 kWh",
+     "expected": "423 kWh",
+     "billed": "423 kWh",
      "detail": null
     },
     {
@@ -47,8 +47,8 @@
       "period_end",
       "lines"
      ],
-     "expected": "32 days",
-     "billed": "32 days",
+     "expected": "28 days",
+     "billed": "28 days",
      "detail": null
     },
     {
@@ -59,8 +59,8 @@
      "fields": [
       "lines[0]"
      ],
-     "expected": "\u00a3130.55",
-     "billed": "\u00a3130.55",
+     "expected": "\u00a3111.33",
+     "billed": "\u00a3111.33",
      "detail": null
     },
     {
@@ -71,8 +71,8 @@
      "fields": [
       "lines[1]"
      ],
-     "expected": "\u00a317.55",
-     "billed": "\u00a317.55",
+     "expected": "\u00a315.35",
+     "billed": "\u00a315.35",
      "detail": null
     },
     {
@@ -84,8 +84,8 @@
       "lines",
       "subtotal_gbp"
      ],
-     "expected": "\u00a3148.10",
-     "billed": "\u00a3148.10",
+     "expected": "\u00a3126.68",
+     "billed": "\u00a3126.68",
      "detail": null
     },
     {
@@ -98,8 +98,8 @@
       "vat",
       "total_gbp"
      ],
-     "expected": "\u00a3155.51",
-     "billed": "\u00a3155.51",
+     "expected": "\u00a3133.01",
+     "billed": "\u00a3133.01",
      "detail": null
     },
     {
@@ -136,8 +136,8 @@
       "period_start",
       "period_end"
      ],
-     "expected": "32 days",
-     "billed": "32 days",
+     "expected": "28 days",
+     "billed": "28 days",
      "detail": null
     },
     {
@@ -161,8 +161,8 @@
      "fields": [
       "vat[0]"
      ],
-     "expected": "\u00a37.41",
-     "billed": "\u00a37.41",
+     "expected": "\u00a36.33",
+     "billed": "\u00a36.33",
      "detail": null
     },
     {
@@ -176,14 +176,14 @@
       "period_start",
       "period_end"
      ],
-     "expected": "\u00a3148.10",
-     "billed": "\u00a3155.51",
+     "expected": "\u00a3126.68",
+     "billed": "\u00a3133.01",
      "detail": null
     }
    ],
-   "expected_total_gbp": "148.10",
-   "billed_total_gbp": "155.51",
-   "difference_gbp": "7.41",
+   "expected_total_gbp": "126.68",
+   "billed_total_gbp": "133.01",
+   "difference_gbp": "6.33",
    "tariff_version": "f6442324ef70",
    "tariff_sources": [
     "https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-october-and-31-december-2026"
@@ -191,207 +191,216 @@
   },
   "context": {
    "method": "tabpfn_v2_lags",
-   "days": 32,
-   "billed_kwh": 496.0,
-   "expected_kwh": 589.6,
-   "low90_kwh": 470.0,
-   "high90_kwh": 773.6,
+   "days": 28,
+   "billed_kwh": 423.0,
+   "expected_kwh": 435.2,
+   "low90_kwh": 313.3,
+   "high90_kwh": 579.4,
    "label": "typical",
-   "history_days": 673
+   "history_days": 559
   },
   "explanation": {
-   "text": "The check failed because the billed total of \u00a3155.51 does not match the recomputed total of \u00a3148.10. This is due to a discrepancy in the total amount.",
+   "text": "There is a discrepancy on your bill. The billed total is \u00a3133.01, but the recomputed total is \u00a3126.68. This is due to two failed checks, one regarding VAT and one regarding the total.",
    "source": "model",
    "rejected": null,
    "reason": null
   },
   "timings": {
-   "extract": 44.115,
-   "ground": 0.595,
-   "reconcile": 0.0,
-   "context": 43.964,
-   "explain": 8.165
+   "extract": 43.126,
+   "ground": 1.033,
+   "reconcile": 0.015,
+   "context": 54.899,
+   "explain": 8.829
   },
-  "id": "40f3ccb1cad4c65f",
-  "household": "MAC000252",
+  "id": "f38dd5f4af42874d",
+  "household": "MAC000453",
   "bill": {
-   "supplier": "Northwind ENERGY",
-   "account_ref": "84-576913",
+   "supplier": "brightside",
+   "account_ref": "42-211453",
    "tariff_name": "Standard Variable (price cap)",
-   "bill_date": "2026-11-08",
-   "period_start": "2026-10-06",
-   "period_end": "2026-11-06",
-   "prev_reading": 31344,
+   "bill_date": "2026-11-03",
+   "period_start": "2026-10-02",
+   "period_end": "2026-10-29",
+   "prev_reading": 33801,
    "prev_reading_type": "A",
-   "curr_reading": 31840,
+   "curr_reading": 34224,
    "curr_reading_type": "A",
-   "units_kwh": "496",
+   "units_kwh": "423",
    "lines": [
     {
      "kind": "energy",
-     "start": "2026-10-06",
-     "end": "2026-11-06",
-     "quantity": "496",
+     "start": "2026-10-02",
+     "end": "2026-10-29",
+     "quantity": "423",
      "rate_p": "26.320",
-     "amount_gbp": "130.55"
+     "amount_gbp": "111.33"
     },
     {
      "kind": "standing",
-     "start": "2026-10-06",
-     "end": "2026-11-06",
-     "quantity": "32",
+     "start": "2026-10-02",
+     "end": "2026-10-29",
+     "quantity": "28",
      "rate_p": "54.830",
-     "amount_gbp": "17.55"
+     "amount_gbp": "15.35"
     }
    ],
-   "subtotal_gbp": "148.10",
+   "subtotal_gbp": "126.68",
    "vat": [
     {
      "pct": "5",
-     "on_gbp": "148.10",
-     "amount_gbp": "7.41"
+     "on_gbp": "126.68",
+     "amount_gbp": "6.33"
     }
    ],
-   "total_gbp": "155.51"
+   "total_gbp": "133.01"
   },
-  "repairs": [],
+  "repairs": [
+   {
+    "field": "lines[1].rate_p",
+    "model": "54.83",
+    "printed": "54.830"
+   }
+  ],
   "extraction": {
    "attempts": 1,
    "problems": [],
-   "model_seconds": 44.06
+   "model_seconds": 43.07
   },
   "boxes": {
    "account_ref": [
-    726,
-    237,
-    836,
-    254
+    1074,
+    78,
+    1168,
+    92
    ],
    "tariff_name": [
-    801,
-    276,
-    1059,
-    295
+    826,
+    328,
+    1129,
+    352
    ],
    "period_start": [
-    71,
-    410,
-    186,
-    427
+    111,
+    232,
+    258,
+    253
    ],
    "period_end": [
-    233,
-    410,
-    352,
-    427
+    304,
+    232,
+    468,
+    253
    ],
    "prev_reading": [
-    361,
-    585,
-    424,
-    602
+    97,
+    528,
+    181,
+    552
    ],
    "curr_reading": [
-    621,
-    585,
-    684,
-    602
+    472,
+    528,
+    566,
+    552
    ],
    "units_kwh": [
-    900,
-    585,
-    939,
-    602
+    846,
+    528,
+    901,
+    552
    ],
    "subtotal_gbp": [
-    1065,
-    989,
-    1149,
-    1006
+    1060,
+    967,
+    1139,
+    984
    ],
-   "total_gbp": null,
+   "total_gbp": [
+    1032,
+    1078,
+    1135,
+    1099
+   ],
    "lines[0].start": [
-    91,
-    864,
-    188,
-    879
+    101,
+    798,
+    195,
+    812
    ],
    "lines[0].end": [
-    213,
-    864,
-    313,
-    879
+    217,
+    798,
+    322,
+    812
    ],
    "lines[0].quantity": [
-    520,
-    835,
-    558,
-    852
+    560,
+    779,
+    597,
+    796
    ],
    "lines[0].rate_p": [
-    761,
-    835,
-    899,
-    857
+    699,
+    778,
+    837,
+    802
    ],
    "lines[0].amount_gbp": [
-    1065,
-    835,
-    1150,
-    852
+    1066,
+    779,
+    1139,
+    796
    ],
    "lines[1].start": [
-    91,
-    936,
-    188,
-    951
+    101,
+    902,
+    195,
+    916
    ],
    "lines[1].end": [
-    213,
-    936,
-    313,
-    951
+    217,
+    902,
+    322,
+    916
    ],
    "lines[1].quantity": [
-    521,
-    907,
-    545,
-    924
+    561,
+    883,
+    585,
+    900
    ],
    "lines[1].rate_p": [
-    757,
-    903,
-    890,
-    933
+    687,
+    882,
+    815,
+    906
    ],
    "lines[1].amount_gbp": [
-    1078,
-    907,
-    1150,
-    924
+    1073,
+    883,
+    1139,
+    900
    ],
    "vat[0].pct": [
-    842,
-    1029,
-    874,
-    1046
+    612,
+    1009,
+    642,
+    1026
    ],
    "vat[0].on_gbp": [
-    1065,
-    989,
-    1149,
-    1006
+    1060,
+    967,
+    1139,
+    984
    ],
    "vat[0].amount_gbp": [
-    1091,
-    1029,
-    1146,
-    1046
+    1083,
+    1009,
+    1139,
+    1026
    ]
   },
-  "review_fields": [
-   "total_gbp"
-  ]
+  "review_fields": []
  },
  "corrections": []
 }

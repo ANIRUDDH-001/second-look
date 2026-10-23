@@ -284,7 +284,9 @@ function BillView({ id, demo }: { id: string; demo?: DemoEntry }) {
         {r.review_fields.length > 0 && (
           <p className="review-note">
             {r.review_fields.length} value{r.review_fields.length > 1 ? "s" : ""} could not be found printed on the bill.
-            They are highlighted below. Check them against the image and correct any that are wrong.
+            {r.review_fields.length > 1
+              ? " They are highlighted below. Check them against the image and correct any that are wrong."
+              : " It is highlighted below. Check it against the image and correct it if it is wrong."}
           </p>
         )}
         <section className="panel explain">
@@ -349,7 +351,8 @@ export default function App() {
   const demos = useQuery({ queryKey: ["demo"], queryFn: demoIndex, enabled: DEMO });
   const entries = demos.data ?? [];
   const current = useMemo(() => entries.find((e) => e.id === id), [entries, id]);
-  useEffect(() => { if (DEMO && !id && entries[0]) setId(entries[0].id); }, [entries, id]);
+  // an old ?bill= link may name an example that was re-recorded under another id
+  useEffect(() => { if (DEMO && entries[0] && !current) setId(entries[0].id); }, [entries, current]);
   useEffect(() => {
     if (id) history.replaceState(null, "", `?bill=${id}`);
   }, [id]);
@@ -376,8 +379,11 @@ export default function App() {
         </p>
       )}
       <main>
-        {id ? <BillView key={id} id={id} demo={current} /> : (
-          <p className="state-msg">Choose a bill image to check. Everything runs on this computer.</p>
+        {id && (!DEMO || current) ? <BillView key={id} id={id} demo={current} /> : (
+          <p className="state-msg">
+            {DEMO ? (demos.isError ? "The recorded examples could not be loaded." : "Loading the recorded examples…")
+              : "Choose a bill image to check. Everything runs on this computer."}
+          </p>
         )}
       </main>
       <footer>

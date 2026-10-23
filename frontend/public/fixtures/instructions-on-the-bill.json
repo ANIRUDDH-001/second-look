@@ -1,0 +1,410 @@
+{
+ "id": "2d55151ff1c51c00",
+ "status": "done",
+ "error": null,
+ "household": "MAC000156",
+ "filename": "D002_clean.png",
+ "created_at": "2026-10-23T15:23:41+00:00",
+ "result": {
+  "verdict": {
+   "kind": "reconciled",
+   "headline": "Every line matches the Ofgem cap. Recomputed total \u00a3132.96.",
+   "findings": [
+    {
+     "check": "meter_advance",
+     "component": "units",
+     "status": "pass",
+     "rule": "current reading \u2212 previous reading = units billed",
+     "fields": [
+      "prev_reading",
+      "curr_reading",
+      "units_kwh"
+     ],
+     "expected": "411 kWh",
+     "billed": "411 kWh",
+     "detail": null
+    },
+    {
+     "check": "energy_quantity",
+     "component": "units",
+     "status": "pass",
+     "rule": "energy line quantities sum to units billed",
+     "fields": [
+      "lines",
+      "units_kwh"
+     ],
+     "expected": "411 kWh",
+     "billed": "411 kWh",
+     "detail": null
+    },
+    {
+     "check": "standing_days",
+     "component": "standing charge",
+     "status": "pass",
+     "rule": "standing-charge days = days in the billing period",
+     "fields": [
+      "period_start",
+      "period_end",
+      "lines"
+     ],
+     "expected": "35 days",
+     "billed": "35 days",
+     "detail": null
+    },
+    {
+     "check": "line_arith_0",
+     "component": "energy",
+     "status": "pass",
+     "rule": "quantity \u00d7 rate = amount",
+     "fields": [
+      "lines[0]"
+     ],
+     "expected": "\u00a3108.38",
+     "billed": "\u00a3108.38",
+     "detail": null
+    },
+    {
+     "check": "line_arith_1",
+     "component": "standing charge",
+     "status": "pass",
+     "rule": "quantity \u00d7 rate = amount",
+     "fields": [
+      "lines[1]"
+     ],
+     "expected": "\u00a318.25",
+     "billed": "\u00a318.25",
+     "detail": null
+    },
+    {
+     "check": "subtotal",
+     "component": "total",
+     "status": "pass",
+     "rule": "charge lines sum to the subtotal",
+     "fields": [
+      "lines",
+      "subtotal_gbp"
+     ],
+     "expected": "\u00a3126.63",
+     "billed": "\u00a3126.63",
+     "detail": null
+    },
+    {
+     "check": "total",
+     "component": "total",
+     "status": "pass",
+     "rule": "subtotal + VAT = total",
+     "fields": [
+      "subtotal_gbp",
+      "vat",
+      "total_gbp"
+     ],
+     "expected": "\u00a3132.96",
+     "billed": "\u00a3132.96",
+     "detail": null
+    },
+    {
+     "check": "line_rate_0",
+     "component": "unit rate",
+     "status": "pass",
+     "rule": "rate = Ofgem cap for Jan 2026 quarter (net of VAT)",
+     "fields": [
+      "lines[0]"
+     ],
+     "expected": "26.371p",
+     "billed": "26.371p",
+     "detail": null
+    },
+    {
+     "check": "line_rate_1",
+     "component": "standing charge",
+     "status": "pass",
+     "rule": "rate = Ofgem cap for Jan 2026 quarter (net of VAT)",
+     "fields": [
+      "lines[1]"
+     ],
+     "expected": "52.143p",
+     "billed": "52.143p",
+     "detail": null
+    },
+    {
+     "check": "standing_coverage",
+     "component": "standing charge",
+     "status": "pass",
+     "rule": "standing charge covers each day of the period once",
+     "fields": [
+      "lines",
+      "period_start",
+      "period_end"
+     ],
+     "expected": "35 days",
+     "billed": "35 days",
+     "detail": null
+    },
+    {
+     "check": "vat_rate",
+     "component": "VAT",
+     "status": "pass",
+     "rule": "VAT rate matches the supply dates (0% on electricity from 1 Oct 2026)",
+     "fields": [
+      "vat",
+      "lines"
+     ],
+     "expected": "5%",
+     "billed": "5%",
+     "detail": null
+    },
+    {
+     "check": "vat_base_0",
+     "component": "VAT",
+     "status": "pass",
+     "rule": "VAT 5% is charged on the lines supplied at that rate",
+     "fields": [
+      "vat[0]",
+      "lines"
+     ],
+     "expected": "\u00a3126.63",
+     "billed": "\u00a3126.63",
+     "detail": null
+    },
+    {
+     "check": "vat_arith_0",
+     "component": "VAT",
+     "status": "pass",
+     "rule": "VAT base \u00d7 rate = VAT amount",
+     "fields": [
+      "vat[0]"
+     ],
+     "expected": "\u00a36.33",
+     "billed": "\u00a36.33",
+     "detail": null
+    },
+    {
+     "check": "expected_total",
+     "component": "total",
+     "status": "pass",
+     "rule": "billed total = independently recomputed total for these units and dates",
+     "fields": [
+      "total_gbp",
+      "units_kwh",
+      "period_start",
+      "period_end"
+     ],
+     "expected": "\u00a3132.96",
+     "billed": "\u00a3132.96",
+     "detail": null
+    }
+   ],
+   "expected_total_gbp": "132.96",
+   "billed_total_gbp": "132.96",
+   "difference_gbp": "0.00",
+   "tariff_version": "f6442324ef70",
+   "tariff_sources": [
+    "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-unit-rates-and-standing-charges"
+   ]
+  },
+  "context": {
+   "method": "tabpfn_v2_lags",
+   "days": 35,
+   "billed_kwh": 411.0,
+   "expected_kwh": 490.0,
+   "low90_kwh": 381.2,
+   "high90_kwh": 592.9,
+   "label": "typical",
+   "history_days": 407
+  },
+  "explanation": {
+   "text": "Your bill has been reconciled, and the recomputed total is \u00a3132.96. The usage context is typical for this home.",
+   "source": "model",
+   "rejected": null,
+   "reason": null
+  },
+  "timings": {
+   "extract": 37.376,
+   "ground": 0.513,
+   "reconcile": 0.0,
+   "context": 41.348,
+   "explain": 6.437
+  },
+  "id": "2d55151ff1c51c00",
+  "household": "MAC000156",
+  "bill": {
+   "supplier": "MERIDIAN UTILITIES PLC",
+   "account_ref": "27-650938",
+   "tariff_name": "Standard Variable (price cap)",
+   "bill_date": "2026-02-10",
+   "period_start": "2026-01-02",
+   "period_end": "2026-02-05",
+   "prev_reading": 53409,
+   "prev_reading_type": "A",
+   "curr_reading": 53820,
+   "curr_reading_type": "A",
+   "units_kwh": "411",
+   "lines": [
+    {
+     "kind": "energy",
+     "start": "2026-01-02",
+     "end": "2026-02-05",
+     "quantity": "411",
+     "rate_p": "26.371",
+     "amount_gbp": "108.38"
+    },
+    {
+     "kind": "standing",
+     "start": "2026-01-02",
+     "end": "2026-02-05",
+     "quantity": "35",
+     "rate_p": "52.143",
+     "amount_gbp": "18.25"
+    }
+   ],
+   "subtotal_gbp": "126.63",
+   "vat": [
+    {
+     "pct": "5",
+     "on_gbp": "126.63",
+     "amount_gbp": "6.33"
+    }
+   ],
+   "total_gbp": "132.96"
+  },
+  "repairs": [],
+  "extraction": {
+   "attempts": 1,
+   "problems": [],
+   "model_seconds": 37.32
+  },
+  "boxes": {
+   "account_ref": [
+    421,
+    178,
+    527,
+    192
+   ],
+   "tariff_name": [
+    421,
+    248,
+    765,
+    268
+   ],
+   "period_start": [
+    361,
+    629,
+    455,
+    646
+   ],
+   "period_end": [
+    421,
+    321,
+    539,
+    338
+   ],
+   "prev_reading": null,
+   "curr_reading": [
+    422,
+    452,
+    479,
+    466
+   ],
+   "units_kwh": [
+    420,
+    486,
+    455,
+    500
+   ],
+   "subtotal_gbp": [
+    1089,
+    720,
+    1159,
+    734
+   ],
+   "total_gbp": [
+    1089,
+    800,
+    1159,
+    814
+   ],
+   "lines[0].start": [
+    361,
+    629,
+    455,
+    646
+   ],
+   "lines[0].end": [
+    541,
+    629,
+    635,
+    646
+   ],
+   "lines[0].quantity": [
+    724,
+    630,
+    759,
+    644
+   ],
+   "lines[0].rate_p": [
+    889,
+    630,
+    959,
+    644
+   ],
+   "lines[0].amount_gbp": [
+    1089,
+    630,
+    1159,
+    644
+   ],
+   "lines[1].start": [
+    361,
+    667,
+    455,
+    684
+   ],
+   "lines[1].end": [
+    541,
+    667,
+    635,
+    684
+   ],
+   "lines[1].quantity": [
+    738,
+    668,
+    759,
+    682
+   ],
+   "lines[1].rate_p": [
+    890,
+    668,
+    959,
+    682
+   ],
+   "lines[1].amount_gbp": [
+    1101,
+    668,
+    1159,
+    682
+   ],
+   "vat[0].pct": [
+    618,
+    755,
+    640,
+    770
+   ],
+   "vat[0].on_gbp": [
+    1089,
+    720,
+    1159,
+    734
+   ],
+   "vat[0].amount_gbp": [
+    1113,
+    756,
+    1159,
+    770
+   ]
+  },
+  "review_fields": [
+   "prev_reading"
+  ]
+ },
+ "corrections": []
+}

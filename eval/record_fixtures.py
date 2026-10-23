@@ -4,7 +4,8 @@ Each example is uploaded to the FastAPI app (in-process TestClient, temporary da
 runs the full pipeline (Gemma, Tesseract, reconcile, TabPFN, explanation), and the bill record is
 saved to frontend/public/fixtures/{slug}.json. Corrections listed for an example are then posted one
 at a time and each resulting record is saved as {slug}.stepN.json, so the demo can replay them.
-Nothing here is edited by hand; rerun this script to regenerate the demo.
+Nothing here is edited by hand; rerun this script to regenerate the demo, or pass slugs to
+re-record only those examples.
 """
 from __future__ import annotations
 
@@ -22,7 +23,7 @@ BILLS = ROOT / "data" / "bills"
 EXAMPLES = [
     {"slug": "matches-the-cap", "image": "extract/X003_scan.png", "title": "A bill that adds up",
      "note": "A scanned bill from a fictional supplier, checked against the Ofgem cap for its dates."},
-    {"slug": "planted-vat-error", "image": "extract/X015_clean.png", "title": "A planted VAT error",
+    {"slug": "planted-vat-error", "image": "extract/X016_clean.png", "title": "A planted VAT error",
      "note": "This synthetic bill charges 5% VAT after VAT on household energy fell to 0% on 1 Oct 2026."},
     {"slug": "misread-then-corrected", "image": "extract/X003_clean.png", "title": "A misread, then corrected",
      "note": "Gemma misread two dates. The second reader could not find them on the bill, so they are "
@@ -66,16 +67,22 @@ def _corrections_from_key(rec: dict, key: dict) -> list[dict]:
     return out
 
 
-def main() -> None:
+def main(only: list[str]) -> None:
     os.environ["SECONDLOOK_DATA"] = tempfile.mkdtemp()
     from fastapi.testclient import TestClient
 
     from secondlook.api import app as api
 
     OUT.mkdir(parents=True, exist_ok=True)
+    # re-recording some examples keeps the others' entries
+    kept = {e["id"]: e for e in json.loads((OUT / "index.json").read_text(encoding="utf-8"))} if only else {}
     index = []
     with TestClient(api.app) as c:
         for ex in EXAMPLES:
+            if only and ex["slug"] not in only:
+                if ex["slug"] in kept:
+                    index.append(kept[ex["slug"]])
+                continue
             key = _key(ex["image"])
             path = BILLS / ex["image"]
             hh = key.get("household") or ""
@@ -103,4 +110,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+
+    main(sys.argv[1:])  # optional slugs: re-record only these

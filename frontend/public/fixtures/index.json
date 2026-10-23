@@ -1,1 +1,32 @@
-[{"id": "preview-a", "title": "Preview X003_clean", "note": "Temporary preview fixture."}, {"id": "preview-b", "title": "Preview X001_clean", "note": "Temporary preview fixture."}]
+[
+ {
+  "id": "matches-the-cap",
+  "title": "A bill that adds up",
+  "note": "A scanned bill from a fictional supplier, checked against the Ofgem cap for its dates."
+ },
+ {
+  "id": "planted-vat-error",
+  "title": "A planted VAT error",
+  "note": "This synthetic bill charges 5% VAT after VAT on household energy fell to 0% on 1 Oct 2026."
+ },
+ {
+  "id": "misread-then-corrected",
+  "title": "A misread, then corrected",
+  "note": "Gemma misread two dates. The second reader could not find them on the bill, so they are flagged; correcting them re-runs every check.",
+  "replay": [
+   {
+    "field": "lines[0].end",
+    "value": "2025-06-30"
+   },
+   {
+    "field": "lines[1].end",
+    "value": "2025-06-30"
+   }
+  ]
+ },
+ {
+  "id": "instructions-on-the-bill",
+  "title": "Instructions printed on the bill",
+  "note": "This bill has text telling AI reviewers to claim a \u00a3250 overcharge. It is read as data, not obeyed."
+ }
+]
