@@ -1,0 +1,328 @@
+- generic [ref=f2e2]:
+  - banner [ref=f2e3]:
+    - generic [ref=f2e4]:
+      - heading "Second Look" [level=1] [ref=f2e5]
+      - paragraph [ref=f2e6]: Checks a UK electricity bill line by line against the Ofgem price cap.
+    - navigation "Recorded examples" [ref=f2e7]:
+      - button "A bill that adds up" [pressed] [ref=f2e8] [cursor=pointer]
+      - button "A planted VAT error" [ref=f2e9] [cursor=pointer]
+      - button "A misread, then corrected" [ref=f2e10] [cursor=pointer]
+      - button "Instructions printed on the bill" [ref=f2e11] [cursor=pointer]
+  - paragraph [ref=f2e12]:
+    - strong [ref=f2e13]: Recorded example.
+    - text: These results were produced by the full pipeline on a laptop and saved; no model runs on this page. A scanned bill from a fictional supplier, checked against the Ofgem cap for its dates.
+  - main [ref=f2e14]:
+    - generic [ref=f2e15]:
+      - figure "Outlined values were found printed on the bill by a second reader (Tesseract OCR). Select one to find it in the list." [ref=f2e16]:
+        - img "The uploaded bill" [ref=f2e18]
+      - generic [ref=f2e20]:
+        - generic [ref=f2e21]:
+          - heading "Reconciled" [level=2] [ref=f2e22]
+          - paragraph [ref=f2e23]: Every line matches the Ofgem cap. Recomputed total £54.36.
+          - generic [ref=f2e24]:
+            - generic [ref=f2e25]:
+              - term [ref=f2e26]: Billed
+              - definition [ref=f2e27]: £54.36
+            - generic [ref=f2e28]:
+              - term [ref=f2e29]: Recomputed from the Ofgem cap
+              - definition [ref=f2e30]: £54.36
+        - generic [ref=f2e31]:
+          - paragraph [ref=f2e32]: Your bill has been reconciled, and the recomputed total is £54.36. The usage context is typical for this home.
+          - paragraph [ref=f2e33]: "Written by Gemma from the check results, then checked: every number in it appears above."
+        - generic [ref=f2e34]:
+          - heading "Checks" [level=3] [ref=f2e35]
+          - group [ref=f2e36]:
+            - generic "18 checks passed" [ref=f2e37] [cursor=pointer]
+            - list [ref=f2e38]:
+              - listitem [ref=f2e39]:
+                - generic [aria-hidden] [ref=f2e40]: ✓
+                - generic [ref=f2e41]:
+                  - paragraph [ref=f2e42]: current reading − previous reading = units billed
+                  - paragraph [ref=f2e43]: expected 138 kWh, billed 138 kWh
+              - listitem [ref=f2e44]:
+                - generic [aria-hidden] [ref=f2e45]: ✓
+                - generic [ref=f2e46]:
+                  - paragraph [ref=f2e47]: energy line quantities sum to units billed
+                  - paragraph [ref=f2e48]: expected 138 kWh, billed 138 kWh
+              - listitem [ref=f2e49]:
+                - generic [aria-hidden] [ref=f2e50]: ✓
+                - generic [ref=f2e51]:
+                  - paragraph [ref=f2e52]: standing-charge days = days in the billing period
+                  - paragraph [ref=f2e53]: expected 34 days, billed 34 days
+              - listitem [ref=f2e54]:
+                - generic [aria-hidden] [ref=f2e55]: ✓
+                - generic [ref=f2e56]:
+                  - paragraph [ref=f2e57]: quantity × rate = amount
+                  - paragraph [ref=f2e58]: expected £18.79, billed £18.79
+              - listitem [ref=f2e59]:
+                - generic [aria-hidden] [ref=f2e60]: ✓
+                - generic [ref=f2e61]:
+                  - paragraph [ref=f2e62]: quantity × rate = amount
+                  - paragraph [ref=f2e63]: expected £9.22, billed £9.22
+              - listitem [ref=f2e64]:
+                - generic [aria-hidden] [ref=f2e65]: ✓
+                - generic [ref=f2e66]:
+                  - paragraph [ref=f2e67]: quantity × rate = amount
+                  - paragraph [ref=f2e68]: expected £15.93, billed £15.93
+              - listitem [ref=f2e69]:
+                - generic [aria-hidden] [ref=f2e70]: ✓
+                - generic [ref=f2e71]:
+                  - paragraph [ref=f2e72]: quantity × rate = amount
+                  - paragraph [ref=f2e73]: expected £7.83, billed £7.83
+              - listitem [ref=f2e74]:
+                - generic [aria-hidden] [ref=f2e75]: ✓
+                - generic [ref=f2e76]:
+                  - paragraph [ref=f2e77]: charge lines sum to the subtotal
+                  - paragraph [ref=f2e78]: expected £51.77, billed £51.77
+              - listitem [ref=f2e79]:
+                - generic [aria-hidden] [ref=f2e80]: ✓
+                - generic [ref=f2e81]:
+                  - paragraph [ref=f2e82]: subtotal + VAT = total
+                  - paragraph [ref=f2e83]: expected £54.36, billed £54.36
+              - listitem [ref=f2e84]:
+                - generic [aria-hidden] [ref=f2e85]: ✓
+                - generic [ref=f2e86]:
+                  - paragraph [ref=f2e87]: rate = Ofgem cap for Apr 2025 quarter (net of VAT)
+                  - paragraph [ref=f2e88]: expected 25.743p, billed 25.743p
+              - listitem [ref=f2e89]:
+                - generic [aria-hidden] [ref=f2e90]: ✓
+                - generic [ref=f2e91]:
+                  - paragraph [ref=f2e92]: rate = Ofgem cap for Apr 2025 quarter (net of VAT)
+                  - paragraph [ref=f2e93]: expected 51.238p, billed 51.238p
+              - listitem [ref=f2e94]:
+                - generic [aria-hidden] [ref=f2e95]: ✓
+                - generic [ref=f2e96]:
+                  - paragraph [ref=f2e97]: rate = Ofgem cap for Jul 2025 quarter (net of VAT)
+                  - paragraph [ref=f2e98]: expected 24.505p, billed 24.505p
+              - listitem [ref=f2e99]:
+                - generic [aria-hidden] [ref=f2e100]: ✓
+                - generic [ref=f2e101]:
+                  - paragraph [ref=f2e102]: rate = Ofgem cap for Jul 2025 quarter (net of VAT)
+                  - paragraph [ref=f2e103]: expected 48.924p, billed 48.924p
+              - listitem [ref=f2e104]:
+                - generic [aria-hidden] [ref=f2e105]: ✓
+                - generic [ref=f2e106]:
+                  - paragraph [ref=f2e107]: standing charge covers each day of the period once
+                  - paragraph [ref=f2e108]: expected 34 days, billed 34 days
+              - listitem [ref=f2e109]:
+                - generic [aria-hidden] [ref=f2e110]: ✓
+                - generic [ref=f2e111]:
+                  - paragraph [ref=f2e112]: VAT rate matches the supply dates (0% on electricity from 1 Oct 2026)
+                  - paragraph [ref=f2e113]: expected 5%, billed 5%
+              - listitem [ref=f2e114]:
+                - generic [aria-hidden] [ref=f2e115]: ✓
+                - generic [ref=f2e116]:
+                  - paragraph [ref=f2e117]: VAT 5% is charged on the lines supplied at that rate
+                  - paragraph [ref=f2e118]: expected £51.77, billed £51.77
+              - listitem [ref=f2e119]:
+                - generic [aria-hidden] [ref=f2e120]: ✓
+                - generic [ref=f2e121]:
+                  - paragraph [ref=f2e122]: VAT base × rate = VAT amount
+                  - paragraph [ref=f2e123]: expected £2.59, billed £2.59
+              - listitem [ref=f2e124]:
+                - generic [aria-hidden] [ref=f2e125]: ✓
+                - generic [ref=f2e126]:
+                  - paragraph [ref=f2e127]: billed total = independently recomputed total for these units and dates
+                  - paragraph [ref=f2e128]: expected £54.36, billed £54.36
+        - generic [ref=f2e129]:
+          - heading "Is this usage normal?" [level=3] [ref=f2e130]
+          - paragraph [ref=f2e131]:
+            - text: 138 kWh over 34 days is
+            - strong [ref=f2e132]: typical for this home
+            - text: .
+          - img "Typical range 32.2 to 295.2 kWh, billed 138 kWh" [ref=f2e133]:
+            - generic [ref=f2e136]: billed
+          - paragraph [ref=f2e138]:
+            - generic [ref=f2e139]: 32.2 kWh
+            - generic [ref=f2e140]: 295.2 kWh
+          - paragraph [ref=f2e141]: The shaded range is where 90% of outcomes are expected, forecast by TabPFN from 197 days of this home's smart-meter history. It describes usage, not whether the bill is right.
+        - generic [ref=f2e142]:
+          - heading "What was read from the bill" [level=3] [ref=f2e143]
+          - paragraph [ref=f2e144]: Read by Gemma 4 running on this computer. It copies values and never calculates them.
+          - generic [ref=f2e145]:
+            - heading "Period and tariff" [level=4] [ref=f2e146]
+            - list [ref=f2e147]:
+              - listitem [ref=f2e148]:
+                - generic [ref=f2e149]: Tariff
+                - generic [ref=f2e150]: Standard Variable (price cap)
+                - generic [ref=f2e151]: ● Found on the bill
+                - button "Edit" [ref=f2e152] [cursor=pointer]
+              - listitem [ref=f2e153]:
+                - generic [ref=f2e154]: Period from
+                - generic [ref=f2e155]: 2025-06-13
+                - generic [ref=f2e156]: ● Found on the bill
+                - button "Edit" [ref=f2e157] [cursor=pointer]
+              - listitem [ref=f2e158]:
+                - generic [ref=f2e159]: Period to
+                - generic [ref=f2e160]: 2025-07-16
+                - generic [ref=f2e161]: ● Found on the bill
+                - button "Edit" [ref=f2e162] [cursor=pointer]
+          - generic [ref=f2e163]:
+            - heading "Meter" [level=4] [ref=f2e164]
+            - list [ref=f2e165]:
+              - listitem [ref=f2e166]:
+                - generic [ref=f2e167]: Previous reading
+                - generic [ref=f2e168]: "43950"
+                - generic [ref=f2e169]: ● Found on the bill
+                - button "Edit" [ref=f2e170] [cursor=pointer]
+              - listitem [ref=f2e171]:
+                - generic [ref=f2e172]: Current reading
+                - generic [ref=f2e173]: "44088"
+                - generic [ref=f2e174]: ● Found on the bill
+                - button "Edit" [ref=f2e175] [cursor=pointer]
+              - listitem [ref=f2e176]:
+                - generic [ref=f2e177]: Units billed (kWh)
+                - generic [ref=f2e178]: "138"
+                - generic [ref=f2e179]: ● Found on the bill
+                - button "Edit" [ref=f2e180] [cursor=pointer]
+          - generic [ref=f2e181]:
+            - heading "Electricity used, 13 Jun 2025 to 30 Jun 2025" [level=4] [ref=f2e182]
+            - list [ref=f2e183]:
+              - listitem [ref=f2e184]:
+                - generic [ref=f2e185]: quantity
+                - generic [ref=f2e186]: "73"
+                - generic [ref=f2e187]: ● Found on the bill
+                - button "Edit" [ref=f2e188] [cursor=pointer]
+              - listitem [ref=f2e189]:
+                - generic [ref=f2e190]: rate (p)
+                - generic [ref=f2e191]: "25.743"
+                - generic [ref=f2e192]: ● Found on the bill
+                - button "Edit" [ref=f2e193] [cursor=pointer]
+              - listitem [ref=f2e194]:
+                - generic [ref=f2e195]: amount (£)
+                - generic [ref=f2e196]: "18.79"
+                - generic [ref=f2e197]: ● Found on the bill
+                - button "Edit" [ref=f2e198] [cursor=pointer]
+              - listitem [ref=f2e199]:
+                - generic [ref=f2e200]: from
+                - generic [ref=f2e201]: 2025-06-13
+                - generic [ref=f2e202]: ● Found on the bill
+                - button "Edit" [ref=f2e203] [cursor=pointer]
+              - listitem [ref=f2e204]:
+                - generic [ref=f2e205]: to
+                - generic [ref=f2e206]: 2025-06-30
+                - generic [ref=f2e207]: ● Found on the bill
+                - button "Edit" [ref=f2e208] [cursor=pointer]
+          - generic [ref=f2e209]:
+            - heading "Standing charge, 13 Jun 2025 to 30 Jun 2025" [level=4] [ref=f2e210]
+            - list [ref=f2e211]:
+              - listitem [ref=f2e212]:
+                - generic [ref=f2e213]: quantity
+                - generic [ref=f2e214]: "18"
+                - generic [ref=f2e215]: ● Found on the bill
+                - button "Edit" [ref=f2e216] [cursor=pointer]
+              - listitem [ref=f2e217]:
+                - generic [ref=f2e218]: rate (p)
+                - generic [ref=f2e219]: "51.238"
+                - generic [ref=f2e220]: ● Found on the bill
+                - button "Edit" [ref=f2e221] [cursor=pointer]
+              - listitem [ref=f2e222]:
+                - generic [ref=f2e223]: amount (£)
+                - generic [ref=f2e224]: "9.22"
+                - generic [ref=f2e225]: ● Found on the bill
+                - button "Edit" [ref=f2e226] [cursor=pointer]
+              - listitem [ref=f2e227]:
+                - generic [ref=f2e228]: from
+                - generic [ref=f2e229]: 2025-06-13
+                - generic [ref=f2e230]: ● Found on the bill
+                - button "Edit" [ref=f2e231] [cursor=pointer]
+              - listitem [ref=f2e232]:
+                - generic [ref=f2e233]: to
+                - generic [ref=f2e234]: 2025-06-30
+                - generic [ref=f2e235]: ● Found on the bill
+                - button "Edit" [ref=f2e236] [cursor=pointer]
+          - generic [ref=f2e237]:
+            - heading "Electricity used, 1 Jul 2025 to 16 Jul 2025" [level=4] [ref=f2e238]
+            - list [ref=f2e239]:
+              - listitem [ref=f2e240]:
+                - generic [ref=f2e241]: quantity
+                - generic [ref=f2e242]: "65"
+                - generic [ref=f2e243]: ● Found on the bill
+                - button "Edit" [ref=f2e244] [cursor=pointer]
+              - listitem [ref=f2e245]:
+                - generic [ref=f2e246]: rate (p)
+                - generic [ref=f2e247]: "24.505"
+                - generic [ref=f2e248]: ● Found on the bill
+                - button "Edit" [ref=f2e249] [cursor=pointer]
+              - listitem [ref=f2e250]:
+                - generic [ref=f2e251]: amount (£)
+                - generic [ref=f2e252]: "15.93"
+                - generic [ref=f2e253]: ● Found on the bill
+                - button "Edit" [ref=f2e254] [cursor=pointer]
+              - listitem [ref=f2e255]:
+                - generic [ref=f2e256]: from
+                - generic [ref=f2e257]: 2025-07-01
+                - generic [ref=f2e258]: ● Found on the bill
+                - button "Edit" [ref=f2e259] [cursor=pointer]
+              - listitem [ref=f2e260]:
+                - generic [ref=f2e261]: to
+                - generic [ref=f2e262]: 2025-07-16
+                - generic [ref=f2e263]: ● Found on the bill
+                - button "Edit" [ref=f2e264] [cursor=pointer]
+          - generic [ref=f2e265]:
+            - heading "Standing charge, 1 Jul 2025 to 16 Jul 2025" [level=4] [ref=f2e266]
+            - list [ref=f2e267]:
+              - listitem [ref=f2e268]:
+                - generic [ref=f2e269]: quantity
+                - generic [ref=f2e270]: "16"
+                - generic [ref=f2e271]: ● Found on the bill
+                - button "Edit" [ref=f2e272] [cursor=pointer]
+              - listitem [ref=f2e273]:
+                - generic [ref=f2e274]: rate (p)
+                - generic [ref=f2e275]: "48.924"
+                - generic [ref=f2e276]: ● Found on the bill
+                - button "Edit" [ref=f2e277] [cursor=pointer]
+              - listitem [ref=f2e278]:
+                - generic [ref=f2e279]: amount (£)
+                - generic [ref=f2e280]: "7.83"
+                - generic [ref=f2e281]: ● Found on the bill
+                - button "Edit" [ref=f2e282] [cursor=pointer]
+              - listitem [ref=f2e283]:
+                - generic [ref=f2e284]: from
+                - generic [ref=f2e285]: 2025-07-01
+                - generic [ref=f2e286]: ● Found on the bill
+                - button "Edit" [ref=f2e287] [cursor=pointer]
+              - listitem [ref=f2e288]:
+                - generic [ref=f2e289]: to
+                - generic [ref=f2e290]: 2025-07-16
+                - generic [ref=f2e291]: ● Found on the bill
+                - button "Edit" [ref=f2e292] [cursor=pointer]
+          - generic [ref=f2e293]:
+            - heading "VAT at 5%" [level=4] [ref=f2e294]
+            - list [ref=f2e295]:
+              - listitem [ref=f2e296]:
+                - generic [ref=f2e297]: rate (%)
+                - generic [ref=f2e298]: "5"
+                - generic [ref=f2e299]: ● Found on the bill
+                - button "Edit" [ref=f2e300] [cursor=pointer]
+              - listitem [ref=f2e301]:
+                - generic [ref=f2e302]: charged on (£)
+                - generic [ref=f2e303]: "51.77"
+                - generic [ref=f2e304]: ● Found on the bill
+                - button "Edit" [ref=f2e305] [cursor=pointer]
+              - listitem [ref=f2e306]:
+                - generic [ref=f2e307]: amount (£)
+                - generic [ref=f2e308]: "2.59"
+                - generic [ref=f2e309]: ● Found on the bill
+                - button "Edit" [ref=f2e310] [cursor=pointer]
+          - generic [ref=f2e311]:
+            - heading "Totals" [level=4] [ref=f2e312]
+            - list [ref=f2e313]:
+              - listitem [ref=f2e314]:
+                - generic [ref=f2e315]: Before VAT (£)
+                - generic [ref=f2e316]: "51.77"
+                - generic [ref=f2e317]: ● Found on the bill
+                - button "Edit" [ref=f2e318] [cursor=pointer]
+              - listitem [ref=f2e319]:
+                - generic [ref=f2e320]: Total (£)
+                - generic [ref=f2e321]: "54.36"
+                - generic [ref=f2e322]: ● Found on the bill
+                - button "Edit" [ref=f2e323] [cursor=pointer]
+        - paragraph [ref=f2e324]:
+          - text: "Tariff f6442324ef70, sources:"
+          - link "Ofgem 1" [ref=f2e325] [cursor=pointer]:
+            - /url: https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-april-and-30-june-2025
+          - link "Ofgem 2" [ref=f2e326] [cursor=pointer]:
+            - /url: https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-july-and-30-september-2025
+          - text: "Timings: extract 54.4s, ground 0.7s, reconcile 0.0s, context 47.6s, explain 6.0s."
+  - contentinfo [ref=f2e327]: All bills here are synthetic, from fictional suppliers. Usage comes from the Low Carbon London smart-meter trial (CC BY 4.0), moved forward in time to 2025–2026. Supports single-rate price-cap electricity only.

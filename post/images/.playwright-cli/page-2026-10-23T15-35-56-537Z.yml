@@ -1,0 +1,16 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - heading "Second Look" [level=1] [ref=e5]
+      - paragraph [ref=e6]: Checks a UK electricity bill line by line against the Ofgem price cap.
+    - navigation "Recorded examples" [ref=e7]:
+      - button "A bill that adds up" [ref=e8] [cursor=pointer]
+      - button "A planted VAT error" [pressed] [ref=e9] [cursor=pointer]
+      - button "A misread, then corrected" [ref=e10] [cursor=pointer]
+      - button "Instructions printed on the bill" [ref=e11] [cursor=pointer]
+  - paragraph [ref=e12]:
+    - strong [ref=e13]: Recorded example.
+    - text: These results were produced by the full pipeline on a laptop and saved; no model runs on this page. This synthetic bill charges 5% VAT after VAT on household energy fell to 0% on 1 Oct 2026.
+  - main [ref=e14]:
+    - paragraph [ref=e15]: Loading the bill…
+  - contentinfo [ref=e16]: All bills here are synthetic, from fictional suppliers. Usage comes from the Low Carbon London smart-meter trial (CC BY 4.0), moved forward in time to 2025–2026. Supports single-rate price-cap electricity only.
