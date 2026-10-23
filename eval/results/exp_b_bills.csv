@@ -1,0 +1,141 @@
+bill_id,fault,expected,verdict,correct,failed_checks,difference_gbp
+F000,none,reconciled,reconciled,True,,0.00
+F001,none,reconciled,reconciled,True,,0.00
+F002,none,reconciled,reconciled,True,,0.00
+F003,none,reconciled,reconciled,True,,0.00
+F004,none,reconciled,reconciled,True,,0.00
+F005,none,reconciled,reconciled,True,,0.00
+F006,none,reconciled,reconciled,True,,0.00
+F007,none,reconciled,reconciled,True,,0.00
+F008,none,reconciled,reconciled,True,,0.00
+F009,none,reconciled,reconciled,True,,0.00
+F010,none,reconciled,reconciled,True,,0.00
+F011,none,reconciled,reconciled,True,,0.00
+F012,none,reconciled,reconciled,True,,0.00
+F013,none,reconciled,reconciled,True,,0.00
+F014,none,reconciled,reconciled,True,,0.00
+F015,none,reconciled,reconciled,True,,0.00
+F016,none,reconciled,reconciled,True,,0.00
+F017,none,reconciled,reconciled,True,,0.00
+F018,none,reconciled,reconciled,True,,0.00
+F019,none,reconciled,reconciled,True,,0.00
+F020,none,reconciled,reconciled,True,,0.00
+F021,none,reconciled,reconciled,True,,0.00
+F022,none,reconciled,reconciled,True,,0.00
+F023,none,reconciled,reconciled,True,,0.00
+F024,none,reconciled,reconciled,True,,0.00
+F025,none,reconciled,reconciled,True,,0.00
+F026,none,reconciled,reconciled,True,,0.00
+F027,none,reconciled,reconciled,True,,0.00
+F028,none,reconciled,reconciled,True,,0.00
+F029,none,reconciled,reconciled,True,,0.00
+F030,none,reconciled,reconciled,True,,0.00
+F031,none,reconciled,reconciled,True,,0.00
+F032,none,reconciled,reconciled,True,,0.00
+F033,none,reconciled,reconciled,True,,0.00
+F034,none,reconciled,reconciled,True,,0.00
+F035,none,reconciled,reconciled,True,,0.00
+F036,none,reconciled,reconciled,True,,0.00
+F037,none,reconciled,reconciled,True,,0.00
+F038,none,reconciled,reconciled,True,,0.00
+F039,none,reconciled,reconciled,True,,0.00
+F040,none,reconciled,reconciled,True,,0.00
+F041,none,reconciled,reconciled,True,,0.00
+F042,none,reconciled,reconciled,True,,0.00
+F043,none,reconciled,reconciled,True,,0.00
+F044,none,reconciled,reconciled,True,,0.00
+F045,none,reconciled,reconciled,True,,0.00
+F046,none,reconciled,reconciled,True,,0.00
+F047,none,reconciled,reconciled,True,,0.00
+F048,none,reconciled,reconciled,True,,0.00
+F049,none,reconciled,reconciled,True,,0.00
+F050,none,reconciled,reconciled,True,,0.00
+F051,none,reconciled,reconciled,True,,0.00
+F052,none,reconciled,reconciled,True,,0.00
+F053,none,reconciled,reconciled,True,,0.00
+F054,none,reconciled,reconciled,True,,0.00
+F055,none,reconciled,reconciled,True,,0.00
+F056,none,reconciled,reconciled,True,,0.00
+F057,none,reconciled,reconciled,True,,0.00
+F058,none,reconciled,reconciled,True,,0.00
+F059,none,reconciled,reconciled,True,,0.00
+F060,wrong_unit_rate,discrepancy,discrepancy,True,expected_total line_rate,14.50
+F061,wrong_unit_rate,discrepancy,discrepancy,True,expected_total line_rate,20.79
+F062,wrong_unit_rate,discrepancy,discrepancy,True,expected_total line_rate,4.93
+F063,wrong_unit_rate,discrepancy,discrepancy,True,expected_total line_rate,6.58
+F064,wrong_unit_rate,discrepancy,discrepancy,True,expected_total line_rate,10.37
+F065,wrong_unit_rate,discrepancy,discrepancy,True,expected_total line_rate,0.65
+F066,wrong_unit_rate,discrepancy,discrepancy,True,expected_total line_rate,5.35
+F067,wrong_unit_rate,discrepancy,discrepancy,True,expected_total line_rate,2.65
+F068,wrong_unit_rate,discrepancy,discrepancy,True,expected_total line_rate,5.65
+F069,wrong_unit_rate,discrepancy,discrepancy,True,expected_total line_rate,2.89
+F070,stale_rate,discrepancy,discrepancy,True,expected_total line_rate,-0.26
+F071,stale_rate,discrepancy,discrepancy,True,expected_total line_rate,1.27
+F072,stale_rate,discrepancy,discrepancy,True,expected_total line_rate,-3.04
+F073,stale_rate,discrepancy,discrepancy,True,expected_total line_rate,-0.74
+F074,stale_rate,discrepancy,discrepancy,True,line_rate,0.02
+F075,stale_rate,discrepancy,discrepancy,True,expected_total line_rate,-0.25
+F076,stale_rate,discrepancy,discrepancy,True,expected_total line_rate,-0.74
+F077,stale_rate,discrepancy,discrepancy,True,expected_total line_rate,1.35
+F078,stale_rate,discrepancy,discrepancy,True,expected_total line_rate,-1.44
+F079,stale_rate,discrepancy,discrepancy,True,expected_total line_rate,-1.51
+F080,standing_day_count,discrepancy,discrepancy,True,expected_total standing_days,0.61
+F081,standing_day_count,discrepancy,discrepancy,True,expected_total standing_days,1.14
+F082,standing_day_count,discrepancy,discrepancy,True,expected_total standing_days,0.56
+F083,standing_day_count,discrepancy,discrepancy,True,expected_total standing_days,1.08
+F084,standing_day_count,discrepancy,discrepancy,True,expected_total standing_days,0.58
+F085,standing_day_count,discrepancy,discrepancy,True,expected_total standing_days,1.21
+F086,standing_day_count,discrepancy,discrepancy,True,expected_total standing_days,0.57
+F087,standing_day_count,discrepancy,discrepancy,True,expected_total standing_days,0.55
+F088,standing_day_count,discrepancy,discrepancy,True,expected_total standing_days,0.54
+F089,standing_day_count,discrepancy,discrepancy,True,expected_total standing_days,0.58
+F090,vat_after_oct_2026,discrepancy,discrepancy,True,expected_total vat_rate,1.95
+F091,vat_after_oct_2026,discrepancy,discrepancy,True,expected_total vat_rate,2.37
+F092,vat_after_oct_2026,discrepancy,discrepancy,True,expected_total vat_rate,4.73
+F093,vat_after_oct_2026,discrepancy,discrepancy,True,expected_total vat_rate,4.42
+F094,vat_after_oct_2026,discrepancy,discrepancy,True,expected_total vat_rate,2.98
+F095,vat_after_oct_2026,discrepancy,discrepancy,True,expected_total vat_rate,3.09
+F096,vat_after_oct_2026,discrepancy,discrepancy,True,expected_total vat_rate,5.29
+F097,vat_after_oct_2026,discrepancy,discrepancy,True,expected_total vat_rate,2.88
+F098,vat_after_oct_2026,discrepancy,discrepancy,True,expected_total vat_rate,2.87
+F099,vat_after_oct_2026,discrepancy,discrepancy,True,expected_total vat_rate,4.27
+F100,reading_mismatch,discrepancy,discrepancy,True,meter_advance,0.00
+F101,reading_mismatch,discrepancy,discrepancy,True,meter_advance,0.00
+F102,reading_mismatch,discrepancy,discrepancy,True,expected_total meter_advance,-0.48
+F103,reading_mismatch,discrepancy,discrepancy,True,expected_total meter_advance,0.42
+F104,reading_mismatch,discrepancy,discrepancy,True,meter_advance,0.00
+F105,reading_mismatch,discrepancy,discrepancy,True,meter_advance,0.00
+F106,reading_mismatch,discrepancy,discrepancy,True,expected_total meter_advance,-0.13
+F107,reading_mismatch,discrepancy,discrepancy,True,meter_advance,0.00
+F108,reading_mismatch,discrepancy,discrepancy,True,expected_total meter_advance,0.13
+F109,reading_mismatch,discrepancy,discrepancy,True,meter_advance,0.00
+F110,estimated_reading,insufficient_evidence,insufficient_evidence,True,,0.00
+F111,estimated_reading,insufficient_evidence,insufficient_evidence,True,,0.00
+F112,estimated_reading,insufficient_evidence,insufficient_evidence,True,,0.00
+F113,estimated_reading,insufficient_evidence,insufficient_evidence,True,,0.00
+F114,estimated_reading,insufficient_evidence,insufficient_evidence,True,,0.00
+F115,estimated_reading,insufficient_evidence,insufficient_evidence,True,,0.00
+F116,estimated_reading,insufficient_evidence,insufficient_evidence,True,,0.00
+F117,estimated_reading,insufficient_evidence,insufficient_evidence,True,,0.00
+F118,estimated_reading,insufficient_evidence,insufficient_evidence,True,,0.00
+F119,estimated_reading,insufficient_evidence,insufficient_evidence,True,,0.00
+F120,total_arithmetic,discrepancy,discrepancy,True,expected_total total,9.00
+F121,total_arithmetic,discrepancy,discrepancy,True,expected_total total,9.00
+F122,total_arithmetic,discrepancy,discrepancy,True,expected_total total,1.00
+F123,total_arithmetic,discrepancy,discrepancy,True,expected_total total,1.00
+F124,total_arithmetic,discrepancy,discrepancy,True,expected_total total,18.00
+F125,total_arithmetic,discrepancy,discrepancy,True,expected_total total,18.00
+F126,total_arithmetic,discrepancy,discrepancy,True,expected_total total,1.00
+F127,total_arithmetic,discrepancy,discrepancy,True,expected_total total,1.00
+F128,total_arithmetic,discrepancy,discrepancy,True,expected_total total,1.00
+F129,total_arithmetic,discrepancy,discrepancy,True,expected_total total,0.90
+F130,unsupported_tariff,unsupported_tariff,unsupported_tariff,True,,
+F131,unsupported_tariff,unsupported_tariff,unsupported_tariff,True,,
+F132,unsupported_tariff,unsupported_tariff,unsupported_tariff,True,,
+F133,unsupported_tariff,unsupported_tariff,unsupported_tariff,True,,
+F134,unsupported_tariff,unsupported_tariff,unsupported_tariff,True,,
+F135,unsupported_tariff,unsupported_tariff,unsupported_tariff,True,,
+F136,unsupported_tariff,unsupported_tariff,unsupported_tariff,True,,
+F137,unsupported_tariff,unsupported_tariff,unsupported_tariff,True,,
+F138,unsupported_tariff,unsupported_tariff,unsupported_tariff,True,,
+F139,unsupported_tariff,unsupported_tariff,unsupported_tariff,True,,

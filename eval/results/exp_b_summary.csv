@@ -1,0 +1,10 @@
+fault,bills,expected,correct,verdicts,checks_that_fired
+estimated_reading,10,insufficient_evidence,1.0,{'insufficient_evidence': np.int64(10)},{}
+none,60,reconciled,1.0,{'reconciled': np.int64(60)},{}
+reading_mismatch,10,discrepancy,1.0,{'discrepancy': np.int64(10)},"{'meter_advance': np.int64(10), 'expected_total': np.int64(4)}"
+stale_rate,10,discrepancy,1.0,{'discrepancy': np.int64(10)},"{'line_rate': np.int64(10), 'expected_total': np.int64(9)}"
+standing_day_count,10,discrepancy,1.0,{'discrepancy': np.int64(10)},"{'expected_total': np.int64(10), 'standing_days': np.int64(10)}"
+total_arithmetic,10,discrepancy,1.0,{'discrepancy': np.int64(10)},"{'expected_total': np.int64(10), 'total': np.int64(10)}"
+unsupported_tariff,10,unsupported_tariff,1.0,{'unsupported_tariff': np.int64(10)},{}
+vat_after_oct_2026,10,discrepancy,1.0,{'discrepancy': np.int64(10)},"{'expected_total': np.int64(10), 'vat_rate': np.int64(10)}"
+wrong_unit_rate,10,discrepancy,1.0,{'discrepancy': np.int64(10)},"{'expected_total': np.int64(10), 'line_rate': np.int64(10)}"
