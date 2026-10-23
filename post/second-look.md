@@ -4,7 +4,7 @@ published: false
 tags: devchallenge, hf26challenge, opensource, ai
 ---
 
-*This is a submission for the [Hacktoberfest Open Source AI Challenge: Slow and Steady](https://dev.to/challenges/hf26).*
+*This is a submission for the [Hacktoberfest Open-Source AI Challenge Week 3: Slow and Steady](https://dev.to/challenges/hacktoberfest-week3-2026-10-19)*
 
 ## What I Built
 
@@ -29,7 +29,15 @@ verdicts:
 It also says whether the period's usage looks normal for that home, as a TabPFN forecast range from
 smart-meter history. That is context only, and it never changes the verdict.
 
-DEMO_AND_NUMBERS_TBD
+NUMBERS_TBD
+
+## Demo
+
+DEMO_TBD
+
+## Code
+
+CODE_TBD
 
 ## How I Built It
 

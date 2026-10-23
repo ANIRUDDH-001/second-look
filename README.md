@@ -134,7 +134,41 @@ Every number in the write-up comes from a script in `eval/`, which writes CSVs t
 | C | Does TabPFN forecast usage better than naive methods? | `eval/exp_c_forecast.py` |
 | D | Can text on the bill or in a note push it into a false claim? | `eval/exp_d_adversarial.py` |
 
-RESULTS_TABLE
+### Results
+
+**A. Reading the bill** (75 images: 25 bills, each clean, scanned and phone-photographed; our layouts only).
+The verdict here is what the app would say from that reading.
+
+| | Right verdict | "Not enough evidence" | **Wrong verdict** | Seconds per bill |
+|---|---|---|---|---|
+| Tesseract + regex | 42 | 17 | 16 | 2 |
+| Gemma 4 E2B alone | 53 | 0 | 22 | 104 |
+| **Second Look** (Gemma, checked against OCR, evidence gate) | 33 | 42 | **0** | 106 |
+
+Second Look never gave a wrong verdict, but it is cautious. On 36 bills with a planted billing
+error it said *Discrepancy* 8 times and *Not enough evidence* 28 times. It never said
+*Reconciled*, and it always highlighted the line to check. On 27 correct bills it said *Reconciled*
+13 times and *Not enough evidence* 14 times. Field accuracy was 93% on clean images, 94% on scans
+and 90% on phone photos. Tesseract alone managed 85%, 69% and 24%.
+
+**B. The checks** (140 bills, read from the answer key, so no model is involved): every one of 7 planted fault
+classes was caught on 10 of 10 bills. There were 0 false alarms on 60 correct bills, and all 10
+unsupported tariffs were refused.
+
+**C. Usage context** (80 London homes × 6 forecast dates = 480 forecasts of a 30-day period):
+
+| | MAE (kWh/day) | MASE | 90% interval coverage | 90% width (kWh/day) | Seconds |
+|---|---|---|---|---|---|
+| **TabPFN v2, lag features** (shipped) | **1.19** | 1.03 | **94%** | 6.5 | 0.9 |
+| TabPFN-TS (v2 weights) | 1.20 | 1.00 | 98% | 11.2 | 22.6 |
+| Last period | 1.35 | 1.12 | | | |
+| Mean of last 3 periods | 1.69 | 1.36 | | | |
+| Same period last year | 1.87 | 1.54 | | | |
+
+Both TabPFN variants beat the naive forecasts, and they are equally accurate. The lag model's
+interval is half as wide and still covers 94%, at 1/25 of the time, so it is the one shipped.
+
+D_RESULTS
 
 ## Licences
 
