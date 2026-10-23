@@ -7,6 +7,11 @@ services:
     rootDir: frontend
     buildCommand: npm ci && npm run build:demo
     staticPublishPath: dist
+    envVars:
+      - key: VITE_DEMO
+        value: "1"
+      - key: NODE_VERSION
+        value: "22"
     headers:
       - path: /*
         name: X-Content-Type-Options
