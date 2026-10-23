@@ -1,0 +1,538 @@
+{
+ "id": "6cc2d2afc02e1773",
+ "status": "done",
+ "error": null,
+ "household": "MAC000200",
+ "filename": "X003_scan.png",
+ "created_at": "2026-10-23T15:16:48+00:00",
+ "result": {
+  "verdict": {
+   "kind": "reconciled",
+   "headline": "Every line matches the Ofgem cap. Recomputed total \u00a354.36.",
+   "findings": [
+    {
+     "check": "meter_advance",
+     "component": "units",
+     "status": "pass",
+     "rule": "current reading \u2212 previous reading = units billed",
+     "fields": [
+      "prev_reading",
+      "curr_reading",
+      "units_kwh"
+     ],
+     "expected": "138 kWh",
+     "billed": "138 kWh",
+     "detail": null
+    },
+    {
+     "check": "energy_quantity",
+     "component": "units",
+     "status": "pass",
+     "rule": "energy line quantities sum to units billed",
+     "fields": [
+      "lines",
+      "units_kwh"
+     ],
+     "expected": "138 kWh",
+     "billed": "138 kWh",
+     "detail": null
+    },
+    {
+     "check": "standing_days",
+     "component": "standing charge",
+     "status": "pass",
+     "rule": "standing-charge days = days in the billing period",
+     "fields": [
+      "period_start",
+      "period_end",
+      "lines"
+     ],
+     "expected": "34 days",
+     "billed": "34 days",
+     "detail": null
+    },
+    {
+     "check": "line_arith_0",
+     "component": "energy",
+     "status": "pass",
+     "rule": "quantity \u00d7 rate = amount",
+     "fields": [
+      "lines[0]"
+     ],
+     "expected": "\u00a318.79",
+     "billed": "\u00a318.79",
+     "detail": null
+    },
+    {
+     "check": "line_arith_1",
+     "component": "standing charge",
+     "status": "pass",
+     "rule": "quantity \u00d7 rate = amount",
+     "fields": [
+      "lines[1]"
+     ],
+     "expected": "\u00a39.22",
+     "billed": "\u00a39.22",
+     "detail": null
+    },
+    {
+     "check": "line_arith_2",
+     "component": "energy",
+     "status": "pass",
+     "rule": "quantity \u00d7 rate = amount",
+     "fields": [
+      "lines[2]"
+     ],
+     "expected": "\u00a315.93",
+     "billed": "\u00a315.93",
+     "detail": null
+    },
+    {
+     "check": "line_arith_3",
+     "component": "standing charge",
+     "status": "pass",
+     "rule": "quantity \u00d7 rate = amount",
+     "fields": [
+      "lines[3]"
+     ],
+     "expected": "\u00a37.83",
+     "billed": "\u00a37.83",
+     "detail": null
+    },
+    {
+     "check": "subtotal",
+     "component": "total",
+     "status": "pass",
+     "rule": "charge lines sum to the subtotal",
+     "fields": [
+      "lines",
+      "subtotal_gbp"
+     ],
+     "expected": "\u00a351.77",
+     "billed": "\u00a351.77",
+     "detail": null
+    },
+    {
+     "check": "total",
+     "component": "total",
+     "status": "pass",
+     "rule": "subtotal + VAT = total",
+     "fields": [
+      "subtotal_gbp",
+      "vat",
+      "total_gbp"
+     ],
+     "expected": "\u00a354.36",
+     "billed": "\u00a354.36",
+     "detail": null
+    },
+    {
+     "check": "line_rate_0",
+     "component": "unit rate",
+     "status": "pass",
+     "rule": "rate = Ofgem cap for Apr 2025 quarter (net of VAT)",
+     "fields": [
+      "lines[0]"
+     ],
+     "expected": "25.743p",
+     "billed": "25.743p",
+     "detail": null
+    },
+    {
+     "check": "line_rate_1",
+     "component": "standing charge",
+     "status": "pass",
+     "rule": "rate = Ofgem cap for Apr 2025 quarter (net of VAT)",
+     "fields": [
+      "lines[1]"
+     ],
+     "expected": "51.238p",
+     "billed": "51.238p",
+     "detail": null
+    },
+    {
+     "check": "line_rate_2",
+     "component": "unit rate",
+     "status": "pass",
+     "rule": "rate = Ofgem cap for Jul 2025 quarter (net of VAT)",
+     "fields": [
+      "lines[2]"
+     ],
+     "expected": "24.505p",
+     "billed": "24.505p",
+     "detail": null
+    },
+    {
+     "check": "line_rate_3",
+     "component": "standing charge",
+     "status": "pass",
+     "rule": "rate = Ofgem cap for Jul 2025 quarter (net of VAT)",
+     "fields": [
+      "lines[3]"
+     ],
+     "expected": "48.924p",
+     "billed": "48.924p",
+     "detail": null
+    },
+    {
+     "check": "standing_coverage",
+     "component": "standing charge",
+     "status": "pass",
+     "rule": "standing charge covers each day of the period once",
+     "fields": [
+      "lines",
+      "period_start",
+      "period_end"
+     ],
+     "expected": "34 days",
+     "billed": "34 days",
+     "detail": null
+    },
+    {
+     "check": "vat_rate",
+     "component": "VAT",
+     "status": "pass",
+     "rule": "VAT rate matches the supply dates (0% on electricity from 1 Oct 2026)",
+     "fields": [
+      "vat",
+      "lines"
+     ],
+     "expected": "5%",
+     "billed": "5%",
+     "detail": null
+    },
+    {
+     "check": "vat_base_0",
+     "component": "VAT",
+     "status": "pass",
+     "rule": "VAT 5% is charged on the lines supplied at that rate",
+     "fields": [
+      "vat[0]",
+      "lines"
+     ],
+     "expected": "\u00a351.77",
+     "billed": "\u00a351.77",
+     "detail": null
+    },
+    {
+     "check": "vat_arith_0",
+     "component": "VAT",
+     "status": "pass",
+     "rule": "VAT base \u00d7 rate = VAT amount",
+     "fields": [
+      "vat[0]"
+     ],
+     "expected": "\u00a32.59",
+     "billed": "\u00a32.59",
+     "detail": null
+    },
+    {
+     "check": "expected_total",
+     "component": "total",
+     "status": "pass",
+     "rule": "billed total = independently recomputed total for these units and dates",
+     "fields": [
+      "total_gbp",
+      "units_kwh",
+      "period_start",
+      "period_end"
+     ],
+     "expected": "\u00a354.36",
+     "billed": "\u00a354.36",
+     "detail": null
+    }
+   ],
+   "expected_total_gbp": "54.36",
+   "billed_total_gbp": "54.36",
+   "difference_gbp": "0.00",
+   "tariff_version": "f6442324ef70",
+   "tariff_sources": [
+    "https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-april-and-30-june-2025",
+    "https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-july-and-30-september-2025"
+   ]
+  },
+  "context": {
+   "method": "tabpfn_v2_lags",
+   "days": 34,
+   "billed_kwh": 138.0,
+   "expected_kwh": 138.1,
+   "low90_kwh": 32.2,
+   "high90_kwh": 295.2,
+   "label": "typical",
+   "history_days": 197
+  },
+  "explanation": {
+   "text": "Your bill has been reconciled, and the recomputed total is \u00a354.36. The usage context is typical for this home.",
+   "source": "model",
+   "rejected": null,
+   "reason": null
+  },
+  "timings": {
+   "extract": 54.395,
+   "ground": 0.717,
+   "reconcile": 0.007,
+   "context": 47.565,
+   "explain": 5.985
+  },
+  "id": "6cc2d2afc02e1773",
+  "household": "MAC000200",
+  "bill": {
+   "supplier": "Northwind ENERGY",
+   "account_ref": "18-423982",
+   "tariff_name": "Standard Variable (price cap)",
+   "bill_date": "2025-07-21",
+   "period_start": "2025-06-13",
+   "period_end": "2025-07-16",
+   "prev_reading": 43950,
+   "prev_reading_type": "A",
+   "curr_reading": 44088,
+   "curr_reading_type": "A",
+   "units_kwh": "138",
+   "lines": [
+    {
+     "kind": "energy",
+     "start": "2025-06-13",
+     "end": "2025-06-30",
+     "quantity": "73",
+     "rate_p": "25.743",
+     "amount_gbp": "18.79"
+    },
+    {
+     "kind": "standing",
+     "start": "2025-06-13",
+     "end": "2025-06-30",
+     "quantity": "18",
+     "rate_p": "51.238",
+     "amount_gbp": "9.22"
+    },
+    {
+     "kind": "energy",
+     "start": "2025-07-01",
+     "end": "2025-07-16",
+     "quantity": "65",
+     "rate_p": "24.505",
+     "amount_gbp": "15.93"
+    },
+    {
+     "kind": "standing",
+     "start": "2025-07-01",
+     "end": "2025-07-16",
+     "quantity": "16",
+     "rate_p": "48.924",
+     "amount_gbp": "7.83"
+    }
+   ],
+   "subtotal_gbp": "51.77",
+   "vat": [
+    {
+     "pct": "5",
+     "on_gbp": "51.77",
+     "amount_gbp": "2.59"
+    }
+   ],
+   "total_gbp": "54.36"
+  },
+  "repairs": [],
+  "extraction": {
+   "attempts": 1,
+   "problems": [],
+   "model_seconds": 54.33
+  },
+  "boxes": {
+   "account_ref": [
+    552,
+    185,
+    631,
+    200
+   ],
+   "tariff_name": [
+    605,
+    214,
+    791,
+    232
+   ],
+   "period_start": [
+    79,
+    297,
+    170,
+    312
+   ],
+   "period_end": [
+    205,
+    300,
+    290,
+    315
+   ],
+   "prev_reading": [
+    282,
+    429,
+    328,
+    442
+   ],
+   "curr_reading": [
+    469,
+    434,
+    515,
+    447
+   ],
+   "units_kwh": [
+    672,
+    439,
+    698,
+    452
+   ],
+   "subtotal_gbp": [
+    788,
+    836,
+    840,
+    850
+   ],
+   "total_gbp": [
+    767,
+    922,
+    836,
+    940
+   ],
+   "lines[0].start": [
+    85,
+    625,
+    161,
+    637
+   ],
+   "lines[0].end": [
+    182,
+    627,
+    256,
+    639
+   ],
+   "lines[0].quantity": [
+    393,
+    611,
+    410,
+    624
+   ],
+   "lines[0].rate_p": [
+    565,
+    616,
+    665,
+    633
+   ],
+   "lines[0].amount_gbp": [
+    794,
+    622,
+    845,
+    636
+   ],
+   "lines[1].start": [
+    84,
+    677,
+    159,
+    688
+   ],
+   "lines[1].end": [
+    178,
+    679,
+    255,
+    691
+   ],
+   "lines[1].quantity": [
+    393,
+    663,
+    409,
+    676
+   ],
+   "lines[1].rate_p": [
+    564,
+    667,
+    657,
+    686
+   ],
+   "lines[1].amount_gbp": [
+    802,
+    674,
+    844,
+    688
+   ],
+   "lines[2].start": [
+    82,
+    729,
+    145,
+    740
+   ],
+   "lines[2].end": [
+    165,
+    731,
+    236,
+    742
+   ],
+   "lines[2].quantity": [
+    390,
+    715,
+    408,
+    728
+   ],
+   "lines[2].rate_p": [
+    562,
+    719,
+    662,
+    737
+   ],
+   "lines[2].amount_gbp": [
+    791,
+    725,
+    842,
+    739
+   ],
+   "lines[3].start": [
+    81,
+    780,
+    144,
+    792
+   ],
+   "lines[3].end": [
+    164,
+    783,
+    234,
+    794
+   ],
+   "lines[3].quantity": [
+    390,
+    767,
+    406,
+    780
+   ],
+   "lines[3].rate_p": [
+    561,
+    771,
+    654,
+    790
+   ],
+   "lines[3].amount_gbp": [
+    799,
+    778,
+    841,
+    791
+   ],
+   "vat[0].pct": [
+    617,
+    860,
+    640,
+    874
+   ],
+   "vat[0].on_gbp": [
+    788,
+    836,
+    840,
+    850
+   ],
+   "vat[0].amount_gbp": [
+    797,
+    865,
+    839,
+    879
+   ]
+  },
+  "review_fields": []
+ },
+ "corrections": []
+}
