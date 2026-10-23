@@ -24,6 +24,7 @@ export interface Result {
   id: string; household: string | null;
   bill: Record<string, unknown> & { lines: Record<string, unknown>[]; vat: Record<string, unknown>[] };
   boxes: Record<string, Box | null>; review_fields: string[];
+  repairs?: { field: string; model: string; printed: string }[];
   verdict: Verdict; context: UsageContext | null;
   explanation: { text: string; source: "model" | "template"; rejected: string | null; reason: string | null };
   extraction: { attempts: number; problems: string[]; model_seconds: number };
