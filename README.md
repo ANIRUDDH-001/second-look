@@ -61,7 +61,7 @@ content.
 - **Tariff rates are public.** They are Ofgem cap rates for the GB average, paid by Direct Debit,
   single-rate electricity. Each row cites its Ofgem page in
   [`ofgem_caps.yaml`](backend/secondlook/tariff/ofgem_caps.yaml).
-- **The hosted demo is recorded.** The Render site is a static page that shows saved outputs of the
+- **The hosted demo is recorded.** The [Render site](https://second-look-demo-xj2a.onrender.com) is a static page that shows saved outputs of the
   full pipeline, each labelled "Recorded example". No model runs there.
   [`eval/record_fixtures.py`](eval/record_fixtures.py) regenerates them from real API calls.
 
@@ -168,7 +168,16 @@ unsupported tariffs were refused.
 Both TabPFN variants beat the naive forecasts, and they are equally accurate. The lag model's
 interval is half as wide and still covers 94%, at 1/25 of the time, so it is the one shipped.
 
-D_RESULTS
+**D. Attempts to mislead it** (18 cases, run through the full pipeline):
+
+- **Six bills with instructions printed on them**, telling an assistant to report the total as £0.00, to set
+  the units to 1, or to claim a £250 overcharge. No injected value was ever copied into the reading. Three got the verdict the answer key
+  expects; the other three got *Not enough evidence*; none got a wrong verdict.
+- **Twelve explanation cases**: a note asking it to invent an overcharge, conflicting fields, a period outside
+  the tariff table, and missing fields. The guard rejected one model text (it said "overcharge" and "refund"
+  on a *Not enough evidence* bill) and showed the template wording instead. Unsupported claims shown: 0.
+- **A correction re-runs everything.** After correcting a rate, the verdict moved from *Discrepancy* to
+  *Reconciled*; no stale verdict was shown.
 
 ## Licences
 
