@@ -55,6 +55,16 @@ def test_repair_leaves_a_genuine_value_alone():
     assert fixes == [] and fixed.lines[0].rate_p == Decimal("26.1")
 
 
+def test_repair_ignores_a_rate_printed_on_another_row():
+    # the model put line 1's rate (25.74, shortened) on a line whose own row prints 26.100p
+    page = PAGE[:3] + [_line("Electricity used 10 kWh 26.100p/kWh £2.61", 50)] + PAGE[3:]
+    b = _bill()
+    b.lines.append(ChargeLine(kind="energy", start=date(2025, 7, 1), end=date(2025, 7, 16),
+                              quantity=Decimal(10), rate_p=Decimal("25.74"), amount_gbp=Decimal("2.61")))
+    fixed, fixes = repair(b, page, ground(b, page))
+    assert fixes == [] and fixed.lines[1].rate_p == Decimal("25.74")
+
+
 def test_a_failure_on_an_unfound_value_is_not_called_a_discrepancy():
     from secondlook.models import VerdictKind
     from secondlook.pipeline.reconcile import gate, reconcile

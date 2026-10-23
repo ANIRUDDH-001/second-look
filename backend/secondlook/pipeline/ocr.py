@@ -153,11 +153,15 @@ def repair(bill: Bill, lines: list[Line], boxes: dict[str, Box | None]) -> tuple
     """
     b = bill.model_copy(deep=True)
     fixes: list[dict] = []
-    nums = _numbers(lines)
     for i, ln in enumerate(b.lines):
         key = f"lines[{i}].rate_p"
         if ln.rate_p is None or boxes.get(key) is not None:
             continue
+        # only the line's own row counts: the same rate printed on another row is another line's
+        row = _row_window(lines, ln.amount_gbp)
+        if row is None:
+            continue
+        nums = _numbers(row)
         got = format(ln.rate_p, "f")
         places = len(got.split(".")[1]) if "." in got else 0
         # printed digits the model shortened, by truncating or by rounding
