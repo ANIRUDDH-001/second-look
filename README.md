@@ -172,7 +172,7 @@ D_RESULTS
 
 ## Licences
 
-- **This code:** add a `LICENSE` file before publishing. MIT is suggested; the choice is the author's.
+- **This code:** MIT, see [`LICENSE`](LICENSE).
 - **Gemma 4:** Apache 2.0.
 - **TabPFN v2 weights:** Prior Labs licence, **non-commercial use**. TabPFN-TS 1.3 defaults to the
   gated TabPFN 3.5 checkpoint; here it is given the v2 checkpoint explicitly.
