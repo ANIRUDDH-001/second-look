@@ -2162,7 +2162,7 @@ X006_phone,phone,classic,gemma_checked,lines[1].kind,True,True,False
 X006_phone,phone,classic,gemma_checked,lines[1].start,True,True,False
 X006_phone,phone,classic,gemma_checked,lines[1].end,True,True,False
 X006_phone,phone,classic,gemma_checked,lines[1].quantity,True,True,False
-X006_phone,phone,classic,gemma_checked,lines[1].rate_p,True,True,True
+X006_phone,phone,classic,gemma_checked,lines[1].rate_p,True,False,False
 X006_phone,phone,classic,gemma_checked,lines[1].amount_gbp,True,True,True
 X006_phone,phone,classic,gemma_checked,vat[0].pct,True,True,True
 X006_phone,phone,classic,gemma_checked,vat[0].on_gbp,True,True,True
@@ -5036,7 +5036,7 @@ X017_phone,phone,statement,gemma_checked,lines[0].kind,True,True,False
 X017_phone,phone,statement,gemma_checked,lines[0].start,True,True,True
 X017_phone,phone,statement,gemma_checked,lines[0].end,True,False,True
 X017_phone,phone,statement,gemma_checked,lines[0].quantity,True,True,True
-X017_phone,phone,statement,gemma_checked,lines[0].rate_p,True,True,True
+X017_phone,phone,statement,gemma_checked,lines[0].rate_p,True,False,False
 X017_phone,phone,statement,gemma_checked,lines[0].amount_gbp,True,True,False
 X017_phone,phone,statement,gemma_checked,lines[1].kind,True,True,False
 X017_phone,phone,statement,gemma_checked,lines[1].start,True,True,True
@@ -6152,7 +6152,7 @@ X021_phone,phone,classic,gemma_checked,lines[0].kind,True,True,False
 X021_phone,phone,classic,gemma_checked,lines[0].start,True,True,False
 X021_phone,phone,classic,gemma_checked,lines[0].end,True,True,False
 X021_phone,phone,classic,gemma_checked,lines[0].quantity,True,True,False
-X021_phone,phone,classic,gemma_checked,lines[0].rate_p,True,True,True
+X021_phone,phone,classic,gemma_checked,lines[0].rate_p,True,False,False
 X021_phone,phone,classic,gemma_checked,lines[0].amount_gbp,True,True,True
 X021_phone,phone,classic,gemma_checked,lines[1].kind,True,True,False
 X021_phone,phone,classic,gemma_checked,lines[1].start,True,True,False

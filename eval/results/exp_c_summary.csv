@@ -1,0 +1,6 @@
+method,forecasts,mae_kwh_per_day,mase,seconds,coverage80,coverage90,width90_kwh_per_day
+tabpfn_v2_lags,480,1.1898,1.0269,0.9132,0.8625,0.9438,6.4724
+tabpfn_ts,480,1.2002,1.0031,22.5777,0.975,0.9833,11.2146
+naive_last,480,1.3464,1.1218,0.0,,,
+naive_rolling3,480,1.6914,1.355,0.0,,,
+naive_seasonal,480,1.8717,1.5439,0.0,,,

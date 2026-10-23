@@ -24,7 +24,7 @@ from pathlib import Path
 
 from secondlook.models import Bill, VerdictKind
 from secondlook.pipeline.explain import _numbers, explain, payload
-from secondlook.pipeline.reconcile import reconcile
+from secondlook.pipeline.reconcile import gate, reconcile
 from secondlook.pipeline.run import run_image
 from secondlook.tariff.engine import load_tariff
 
@@ -50,7 +50,8 @@ def part1() -> list[dict]:
         truth = Bill.model_validate(r["bill"])
         res = run_image(path.read_bytes(), None, use_model_explain=True)
         got = Bill.model_validate(res["bill"])
-        v = reconcile(got, load_tariff())
+        v = gate(reconcile(got, load_tariff()), res["review_fields"])  # the verdict the app shows
+        assert v.kind.value == res["verdict"]["kind"]
         ex = res["explanation"]
         bad = unsupported(ex["text"], v, None)
         out.append({
