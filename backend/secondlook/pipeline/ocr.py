@@ -99,9 +99,89 @@ def grounded_fields(bill: Bill) -> dict[str, object]:
     return {k: v for k, v in out.items() if v is not None}
 
 
+def _row_window(lines: list[Line], amount) -> list[Line] | None:
+    """The OCR row printing a charge line's amount, plus the row after it (where dates sit)."""
+    if amount is None:
+        return None
+    for i, ln in enumerate(lines):
+        if _find([ln], _forms("amount_gbp", amount)):
+            return lines[i:i + 2]
+    return None
+
+
 def ground(bill: Bill, lines: list[Line]) -> dict[str, Box | None]:
     """Field path -> box where the transcribed value is printed, or None if it is not found."""
-    return {k: _find(lines, _forms(k, v)) for k, v in grounded_fields(bill).items()}
+    # The subtotal and total often share digits; look for the subtotal only on its labelled line,
+    # so a total copied into the subtotal is not "found".
+    labelled = [ln for ln in lines if _SUBTOTAL_LABEL.search(ln.text)] or lines
+    # A charge line's dates, quantity and rate must be printed on that charge's own row: the period
+    # end date appears elsewhere on every bill, so a page-wide search would "find" a wrong one.
+    rows = {i: _row_window(lines, ln.amount_gbp) or lines for i, ln in enumerate(bill.lines)}
+    out = {}
+    for k, v in grounded_fields(bill).items():
+        where = lines
+        if k == "subtotal_gbp":
+            where = labelled
+        elif k.startswith("lines[") and not k.endswith("amount_gbp"):
+            where = rows[int(k[6:k.index("]")])]
+        out[k] = _find(where, _forms(k, v))
+    return out
+
+
+# ---------- second-reader repair ----------
+
+_SUBTOTAL_LABEL = re.compile(r"\b(sub ?total|before vat|net charges)\b", re.I)
+
+
+def _numbers(lines: list[Line]) -> list[tuple[str, Box]]:
+    out = []
+    for ln in lines:
+        for w, box in ln.words:
+            for m in re.finditer(r"\d[\d,]*\.\d+", w):
+                out.append((m.group().replace(",", ""), box))
+    return out
+
+
+def repair(bill: Bill, lines: list[Line], boxes: dict[str, Box | None]) -> tuple[Bill, list[dict]]:
+    """Fill two known transcription slips from the OCR words, and say so.
+
+    1. A rate the model shortened (54.48 for a printed 54.486): if exactly one printed number
+       extends the model's digits, take the printed one.
+    2. A subtotal copied from the total although VAT was charged: take the money on the line
+       labelled Subtotal / Before VAT / Net charges, if there is exactly one.
+    Only ungrounded values are touched, and every change is returned so the UI can show it.
+    """
+    b = bill.model_copy(deep=True)
+    fixes: list[dict] = []
+    nums = _numbers(lines)
+    for i, ln in enumerate(b.lines):
+        key = f"lines[{i}].rate_p"
+        if ln.rate_p is None or boxes.get(key) is not None:
+            continue
+        got = format(ln.rate_p, "f")
+        places = len(got.split(".")[1]) if "." in got else 0
+        # printed digits the model shortened, by truncating or by rounding
+        cands = {(t, box) for t, box in nums if "." in got and len(t) > len(got)
+                 and (t.startswith(got) or Decimal(t).quantize(Decimal(1).scaleb(-places)) == ln.rate_p)}
+        values = {t for t, _ in cands}
+        if len(values) == 1:
+            t, box = next(iter(cands))
+            fixes.append({"field": key, "model": got, "printed": t, "box": box})
+            ln.rate_p = Decimal(t)
+    vat = sum((v.amount_gbp or Decimal(0)) for v in b.vat)
+    if (b.subtotal_gbp is not None and b.subtotal_gbp == b.total_gbp and vat > 0):
+        found = set()
+        for ln in lines:
+            if _SUBTOTAL_LABEL.search(ln.text):
+                for w, box in ln.words:
+                    m = re.fullmatch(r"£?(\d[\d,]*\.\d{2})", w)
+                    if m:
+                        found.add((m.group(1).replace(",", ""), box))
+        if len({t for t, _ in found}) == 1:
+            t, box = next(iter(found))
+            fixes.append({"field": "subtotal_gbp", "model": format(b.subtotal_gbp, "f"), "printed": t, "box": box})
+            b.subtotal_gbp = Decimal(t)
+    return b, fixes
 
 
 # ---------- regex baseline ----------

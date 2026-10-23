@@ -114,7 +114,8 @@ def ts_forecast(history: dict[str, pd.Series], start: date, end: date) -> pd.Dat
     out = {}
     for item, g in pred.groupby("item_id"):
         # Daily quantiles summed: comonotone, so a wide (conservative) interval for the period.
-        out[item] = {str(q): float(g[str(q)].clip(lower=0).mean()) for q in QUANTILES}
+        cols = {str(c): c for c in g.columns}
+        out[item] = {str(q): float(g[cols[str(q)]].clip(lower=0).mean()) for q in QUANTILES}
     return pd.DataFrame.from_dict(out, orient="index")
 
 

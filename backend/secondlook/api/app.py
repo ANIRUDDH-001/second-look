@@ -159,10 +159,11 @@ def correct(id: str, c: Correction) -> dict:
     rec = store.get(id)
     bill = current_bill(rec["extracted"], rec["corrections"])
     t0 = time.perf_counter()
-    result = {**rec["result"], **analyse_bill(bill, rec["household"]), "bill": bill.model_dump(mode="json")}
     # A corrected field is now user-confirmed: it no longer needs review.
     corrected = {x["field"] for x in rec["corrections"]}
-    result["review_fields"] = [f for f in rec["result"]["review_fields"] if f not in corrected]
+    review = [f for f in rec["result"]["review_fields"] if f not in corrected]
+    result = {**rec["result"], **analyse_bill(bill, rec["household"], unverified=review),
+              "bill": bill.model_dump(mode="json"), "review_fields": review}
     store.update(id, result=result)
     _log("correction applied", id=id, field=c.field, verdict=result["verdict"]["kind"],
          seconds=round(time.perf_counter() - t0, 3))

@@ -220,3 +220,25 @@ def reconcile(bill: Bill, tariff: Tariff) -> Verdict:
     return Verdict(kind=kind, headline=head, findings=c.findings, expected_total_gbp=exp_total,
                    billed_total_gbp=bill.total_gbp, difference_gbp=diff,
                    tariff_version=tariff.version, tariff_sources=sources)
+
+
+def gate(v: Verdict, unverified: set[str] | list[str]) -> Verdict:
+    """A discrepancy must rest on values found printed on the bill.
+
+    If a failed check uses a value the second reader could not find, the failure may be a misread,
+    not a billing error: report "not enough evidence" and keep the findings so the user sees why.
+    """
+    unverified = set(unverified)
+    if v.kind != VerdictKind.DISCREPANCY or not unverified:
+        return v
+    # a check names a field ("lines[0].end") or a group ("lines[0]", "lines"); a group covers its leaves
+    used = {f for x in v.findings if x.status == CheckStatus.FAIL for f in x.fields}
+    shaky = sorted(u for u in unverified
+                   if any(u == f or u.startswith(f + ".") or u.startswith(f + "[") for f in used))
+    if not shaky:
+        return v
+    n = len(shaky)
+    return v.model_copy(update={
+        "kind": VerdictKind.INSUFFICIENT,
+        "headline": f"A check failed, but it uses {n} value{'s' if n > 1 else ''} not found on the bill. "
+                    "Check {} first.".format("them" if n > 1 else "it")})

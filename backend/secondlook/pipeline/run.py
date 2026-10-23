@@ -17,8 +17,8 @@ from secondlook.models import Bill
 from secondlook.pipeline.context import ROOT, usage_context
 from secondlook.pipeline.explain import explain
 from secondlook.pipeline.extract import extract
-from secondlook.pipeline.ocr import ground, ocr_lines
-from secondlook.pipeline.reconcile import reconcile
+from secondlook.pipeline.ocr import ground, ocr_lines, repair
+from secondlook.pipeline.reconcile import gate, reconcile
 from secondlook.tariff.engine import load_tariff
 
 USAGE_SHIFT = timedelta(weeks=678)  # LCL 2011-2014 moved onto 2025-2026, weekdays preserved
@@ -64,11 +64,11 @@ def _context(bill: Bill, hh: str | None):
     return usage_context(household_usage(hh), bill.period_start, bill.period_end, float(bill.units_kwh), train)
 
 
-def analyse_bill(bill: Bill, hh: str | None, use_model: bool = True) -> dict:
+def analyse_bill(bill: Bill, hh: str | None, use_model: bool = True, unverified: list[str] = ()) -> dict:
     """Stages 2-5. Deterministic given the bill, except the model's wording (which never sets numbers)."""
     t = {}
     t0 = time.perf_counter()
-    verdict = reconcile(bill, load_tariff())
+    verdict = gate(reconcile(bill, load_tariff()), unverified)
     t["reconcile"] = time.perf_counter() - t0
     t0 = time.perf_counter()
     ctx = _context(bill, hh)
@@ -88,13 +88,17 @@ def run_image(image: bytes, hh: str | None = None, use_model_explain: bool = Tru
     t0 = time.perf_counter()
     lines = ocr_lines(image)
     boxes = ground(ex.bill, lines)
+    bill, fixes = repair(ex.bill, lines, boxes)
+    for f in fixes:
+        boxes[f["field"]] = f["box"]
     t_ground = time.perf_counter() - t0
     review = sorted(k for k, b in boxes.items() if b is None and k not in NON_CRITICAL)
-    out = analyse_bill(ex.bill, hh, use_model_explain)
+    out = analyse_bill(bill, hh, use_model_explain, review)
     out["timings"] = {"extract": round(t_extract, 3), "ground": round(t_ground, 3), **out["timings"]}
     out.update({
         "id": content_hash(image), "household": hh,
-        "bill": json.loads(ex.bill.model_dump_json()),
+        "bill": json.loads(bill.model_dump_json()),
+        "repairs": [{k: f[k] for k in ("field", "model", "printed")} for f in fixes],
         "extraction": {"attempts": ex.attempts, "problems": ex.problems, "model_seconds": round(ex.seconds, 2)},
         "boxes": boxes, "review_fields": review,
     })
