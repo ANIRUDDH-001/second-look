@@ -103,6 +103,8 @@ def ts_forecast(history: dict[str, pd.Series], start: date, end: date) -> pd.Dat
     rows = []
     for item, s in history.items():
         s = s.loc[: pd.Timestamp(start - timedelta(days=1))].iloc[-730:]
+        # Regular daily index ending the day before the period; gaps stay NaN for the pipeline to fill.
+        s = s.reindex(pd.date_range(s.index.min(), pd.Timestamp(start - timedelta(days=1)), freq="D"))
         rows.append(pd.DataFrame({"item_id": item, "timestamp": s.index, "target": s.to_numpy(np.float32)}))
     ctx = pd.concat(rows, ignore_index=True)
     with warnings.catch_warnings():
