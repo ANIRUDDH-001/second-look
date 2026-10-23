@@ -7,11 +7,14 @@ invite it to "fix" the very discrepancy we are trying to find.
 """
 from __future__ import annotations
 
+import io
 import json
 import re
 from dataclasses import dataclass, field
 from datetime import date, datetime
 from decimal import Decimal, InvalidOperation
+
+from PIL import Image, ImageOps
 
 from secondlook import llm
 from secondlook.models import Bill, ChargeLine, VatLine
@@ -148,7 +151,21 @@ def to_bill(raw: dict) -> tuple[Bill, list[str]]:
     return bill, problems
 
 
+MODEL_WIDTH = 896  # measured on CPU: 889 prompt tokens and 23 s, vs 1357 and 60 s at full size, same fields
+
+
+def prepare_image(image: bytes) -> bytes:
+    """Upright, RGB, at most MODEL_WIDTH wide, PNG."""
+    img = ImageOps.exif_transpose(Image.open(io.BytesIO(image))).convert("RGB")
+    if img.width > MODEL_WIDTH:
+        img = img.resize((MODEL_WIDTH, round(img.height * MODEL_WIDTH / img.width)), Image.LANCZOS)
+    buf = io.BytesIO()
+    img.save(buf, "PNG")
+    return buf.getvalue()
+
+
 def extract(image: bytes) -> Extraction:
+    image = prepare_image(image)
     messages = [{"role": "system", "content": SYSTEM}, {"role": "user", "content": USER}]
     seconds, attempts = 0.0, 0
     raw: dict = {}
