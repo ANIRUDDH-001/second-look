@@ -1,0 +1,10 @@
+method,variant,bills,field_acc,critical_all_correct,flagged,verdict_correct,seconds,correct_accepted,correct_flagged,wrong_accepted,wrong_flagged
+gemma,clean,25,0.916,0.32,0.88,0.68,114.98,3,5,0,17
+gemma,phone,25,0.886,0.24,1.0,0.68,93.2,0,6,0,19
+gemma,scan,25,0.929,0.48,0.88,0.76,103.48,3,9,0,13
+gemma_checked,clean,25,0.932,0.56,0.72,0.6,117.42,7,7,0,11
+gemma_checked,phone,25,0.895,0.32,1.0,0.24,95.2,0,8,0,17
+gemma_checked,scan,25,0.942,0.6,0.84,0.48,105.48,4,11,0,10
+tesseract,clean,25,0.848,0.44,0.28,0.76,2.44,11,0,7,7
+tesseract,phone,25,0.238,0.0,0.76,0.32,1.8,0,0,6,19
+tesseract,scan,25,0.687,0.04,0.6,0.6,2.1,1,0,9,15

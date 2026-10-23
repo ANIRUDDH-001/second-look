@@ -1,0 +1,2 @@
+﻿2026-10-23T16:46:17 during Experiments A (Gemma) and C (TabPFN-TS): 16 model processes, 23 TCP connections, 0 to non-loopback addresses 
+2026-10-23T19:08:27 during Experiments D (Gemma explain + extraction) and C (TabPFN-TS): 19 model processes, 8 TCP connections, 0 to non-loopback addresses

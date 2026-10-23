@@ -17,8 +17,8 @@ from pathlib import Path
 
 from secondlook.models import Bill
 from secondlook.pipeline.extract import extract, to_bill
-from secondlook.pipeline.ocr import baseline_extract, ground, ocr_lines
-from secondlook.pipeline.reconcile import reconcile
+from secondlook.pipeline.ocr import baseline_extract, ground, ocr_lines, repair
+from secondlook.pipeline.reconcile import gate, reconcile
 from secondlook.tariff.engine import load_tariff
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -71,21 +71,30 @@ def main(limit: int | None, variants: set[str]) -> None:
         rec = gemma_cached(path)
         g_bill, _ = to_bill(rec["raw"]) if rec["raw"] else (Bill(), None)
         grounding = ground(g_bill, lines)
+        r_bill, fixes = repair(g_bill, lines, grounding)
+        r_grounding = {**grounding, **{f["field"]: f["box"] for f in fixes}}
         methods = {
             "gemma": (g_bill, rec["seconds"], bool(rec["problems"]) or any(
                 v is None for k, v in grounding.items() if k not in NON_CRITICAL)),
+            # the shipped pipeline: Gemma, then the OCR second reader fills shortened rates / subtotal
+            "gemma_checked": (r_bill, rec["seconds"] + ocr_s, bool(rec["problems"]) or any(
+                v is None for k, v in r_grounding.items() if k not in NON_CRITICAL)),
             "tesseract": (baseline_extract(lines), ocr_s, None),
         }
         for method, (bill, secs, flagged) in methods.items():
             ok, spurious = compare(truth, bill)
             crit_ok = all(v for k, v in ok.items() if k not in NON_CRITICAL) and spurious == 0
-            verdict = reconcile(bill, tariff).kind.value
+            v = reconcile(bill, tariff)
+            if method == "gemma_checked":  # the shipped pipeline gates failures on unfound values
+                v = gate(v, [k for k, b in r_grounding.items() if b is None and k not in NON_CRITICAL])
+            verdict = v.kind.value
             if flagged is None:  # the baseline has no second reader; flag only on missing required fields
                 flagged = any(getattr(bill, k) is None for k in ("period_start", "period_end", "units_kwh", "total_gbp"))
             for k, v in ok.items():
                 fields_out.append({"image": path.stem, "variant": r["variant"], "layout": r["layout"], "method": method,
                                    "field": k, "critical": k not in NON_CRITICAL, "correct": v,
-                                   "grounded": (grounding.get(k) is not None) if method == "gemma" else ""})
+                                   "grounded": ((r_grounding if method == "gemma_checked" else grounding).get(k) is not None)
+                                   if method != "tesseract" else ""})
             bills_out.append({
                 "image": path.stem, "bill_id": r["bill_id"], "variant": r["variant"], "layout": r["layout"],
                 "fault": r["fault"] or "", "method": method, "seconds": round(secs, 2),
@@ -94,9 +103,10 @@ def main(limit: int | None, variants: set[str]) -> None:
                 "critical_all_correct": crit_ok, "flagged": flagged,
                 "verdict": verdict, "expected_verdict": r["expected_verdict"],
                 "verdict_correct": verdict == r["expected_verdict"]})
-        g = bills_out[-2]
+        g, c = bills_out[-3], bills_out[-2]
         print(f"[{n}/{len(rows)}] {path.stem} gemma {g['seconds']}s acc={g['field_acc']} flag={g['flagged']} "
-              f"verdict={g['verdict']} (exp {g['expected_verdict']}) | tess acc={bills_out[-1]['field_acc']}", flush=True)
+              f"verdict={g['verdict']} (exp {g['expected_verdict']}) | checked acc={c['field_acc']} "
+              f"flag={c['flagged']} verdict={c['verdict']} | tess acc={bills_out[-1]['field_acc']}", flush=True)
     _write(RES / "exp_a_fields.csv", fields_out)
     _write(RES / "exp_a_bills.csv", bills_out)
     summarize(bills_out)
