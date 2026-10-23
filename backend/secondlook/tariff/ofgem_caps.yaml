@@ -1,0 +1,55 @@
+# Ofgem default-tariff price cap, electricity, single-rate, Direct Debit, GB average.
+# Published figures INCLUDE VAT at the rate shown (5%, then 0% from 1 Oct 2026 to 31 Mar 2027).
+# The engine derives the pre-VAT (net) rate that a bill line shows: net = published / (1 + vat), 4 dp.
+# Regional caps differ from the GB average; a bill priced on a regional cap is "Unsupported tariff".
+tariff_id: ofgem-cap-gb-dd-single-rate
+description: Ofgem price cap, GB average, Direct Debit, single-rate electricity
+quarters:
+  - start: 2025-01-01
+    end: 2025-03-31
+    unit_rate_p_incl_vat: "24.86"
+    standing_p_per_day_incl_vat: "60.97"
+    vat_pct: "5"
+    source: https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-april-and-30-june-2025
+  - start: 2025-04-01
+    end: 2025-06-30
+    unit_rate_p_incl_vat: "27.03"
+    standing_p_per_day_incl_vat: "53.80"
+    vat_pct: "5"
+    source: https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-april-and-30-june-2025
+  - start: 2025-07-01
+    end: 2025-09-30
+    unit_rate_p_incl_vat: "25.73"
+    standing_p_per_day_incl_vat: "51.37"
+    vat_pct: "5"
+    source: https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-july-and-30-september-2025
+  - start: 2025-10-01
+    end: 2025-12-31
+    unit_rate_p_incl_vat: "26.35"
+    standing_p_per_day_incl_vat: "53.68"
+    vat_pct: "5"
+    source: https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-october-and-31-december-2025
+  - start: 2026-01-01
+    end: 2026-03-31
+    unit_rate_p_incl_vat: "27.69"
+    standing_p_per_day_incl_vat: "54.75"
+    vat_pct: "5"
+    source: https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-unit-rates-and-standing-charges
+  - start: 2026-04-01
+    end: 2026-06-30
+    unit_rate_p_incl_vat: "24.67"
+    standing_p_per_day_incl_vat: "57.21"
+    vat_pct: "5"
+    source: https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-unit-rates-and-standing-charges
+  - start: 2026-07-01
+    end: 2026-09-30
+    unit_rate_p_incl_vat: "26.11"
+    standing_p_per_day_incl_vat: "57.19"
+    vat_pct: "5"
+    source: https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-unit-rates-and-standing-charges
+  - start: 2026-10-01
+    end: 2026-12-31
+    unit_rate_p_incl_vat: "26.32"
+    standing_p_per_day_incl_vat: "54.83"
+    vat_pct: "0"
+    source: https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-october-and-31-december-2026
